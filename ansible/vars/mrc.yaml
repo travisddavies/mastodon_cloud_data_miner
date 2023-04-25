@@ -1,0 +1,42 @@
+# Common vars
+availability_zone: melbourne-qh2-uom
+instance_flavor: uom.general.1c4g
+instance_image: 51036d25-0b24-4dbc-bd08-68eec606b582
+instance_key_name: ~/.ssh/tddavie-mrc-key.pem
+instance_network: qh2-uom-internal
+
+# Volume
+volumes:
+  - vol_name: 
+    vol_size: 100
+  - vol_name: data@instance-01
+    vol_size: 100
+  - vol_name: data@instance-02
+    vol_size: 100
+  - vol_name: data@instance-03
+    vol_size: 100
+
+
+# Security group
+security_groups:
+  - name: ssh
+    description: "Security group for SSH access"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: http
+    description: "Security group for HTTP"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: instance-01
+    volumes: "data@instance-01"
+  - name: instance-02
+    volumes: "data@instance-02"
+  - name: instance-03
+    volumes: "data@instance-03"

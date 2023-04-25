@@ -1,0 +1,7 @@
+---
+- hosts: multi
+  gather_facts: true
+  become: yes
+  roles:
+    - role: common
+    - role: nodeJS
