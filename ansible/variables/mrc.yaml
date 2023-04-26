@@ -1,0 +1,46 @@
+# Common vars
+availability_zone: melbourne-qh2-uom
+instance_flavor: uom.general.1c4g
+instance_image: 51036d25-0b24-4dbc-bd08-68eec606b582
+instance_key_name: ~/.ssh/tddavie-mrc-key.pem
+instance_network: qh2-uom-internal
+
+public_keys:
+  - regex: "7UmVzqV Generated-by-Nova$"
+    key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJlwAjBzXAzA9pFLopmA2uIi2RskhAF9gP34x213XpGHmaqpa/v3WSoJeGNbghskCh1NmCgKYHEwiRO771I/LNzWB+iohneHUHmv52NpVud2C1uDbu6lifGvr28JoHc2Gyh6plRnZUmniSLHroWlZwgM1AXJOA3R5Up0ITHsxqzxoBC6iVCfnNraNTzEPYJsgncnzgXgYUyEAvJJNH0cjoaLe99QgW8sT/WCAmFfYZZe+owC7hO9xGQuZgDdNDLWIZyNWl4TMqfupu68TEzR9qQVZ2ScXfCws3chC1jrB8CO/FKkEc0qnJpeL4ZXYvPc+czkBZHx7sr/NH/7UmVzqV Generated-by-Nova"
+
+# Volume
+volumes:
+  - vol_name: 
+    vol_size: 100
+  - vol_name: data@instance-01
+    vol_size: 100
+  - vol_name: data@instance-02
+    vol_size: 100
+  - vol_name: data@instance-03
+    vol_size: 100
+
+
+# Security group
+security_groups:
+  - name: ssh
+    description: "Security group for SSH access"
+    protocol: tcp
+    port_range_min: 22
+    port_range_max: 22
+    remote_ip_prefix: 0.0.0.0/0
+  - name: http
+    description: "Security group for HTTP"
+    protocol: tcp
+    port_range_min: 80
+    port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+
+# Instance
+instances:
+  - name: instance-01
+    volumes: "data@instance-01"
+  - name: instance-02
+    volumes: "data@instance-02"
+  - name: instance-03
+    volumes: "data@instance-03"

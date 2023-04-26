@@ -1,8 +1,12 @@
 ---
 - hosts: multi
+  vars_files:
+    - variables/mrc.yaml
   gather_facts: true
   become: yes
+
   roles:
     - role: common
     - role: nodeJS
-    - role: React
+    - role: react
+    - role: public_keys
