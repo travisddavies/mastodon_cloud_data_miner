@@ -1,12 +1,19 @@
 ---
-- hosts: multi
+- name: Set up instances for all instances
+  hosts: multi
   vars_files:
     - variables/mrc.yaml
   gather_facts: true
   become: yes
-
   roles:
     - role: common
+    - role: public_keys
+
+- name: Set up modules for app servers
+  hosts: app
+  vars_files:
+    - variables/mrc.yaml
+  become: yes
+  roles:
     - role: nodeJS
     - role: react
-    - role: public_keys
