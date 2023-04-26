@@ -1,2 +1,2 @@
-# COMP90024_Ass2
-Assignment 2 for Cloud and Cluster Computing
+# COMP90024 Cluster and Cloud Computing, Semester 1 - Assignment 2
+Documentation goes here
