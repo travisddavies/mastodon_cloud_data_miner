@@ -17,3 +17,11 @@
   roles:
     - role: nodeJS
     - role: react
+
+- name: Set up modules for db servers
+  hosts: db 
+  vars_files:
+    - variables/mrc.yaml
+  become: yes 
+  roles:  
+    - role: couchdb
