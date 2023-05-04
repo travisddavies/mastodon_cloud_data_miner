@@ -13,7 +13,6 @@ print("Reading file")
 #reading the Twitter file
 twitter_file_path='/home/ubuntu/data/twitterhuge.json'
 
-
 def node_process(twitter_file_path,c_start,c_end,b_size):
     total_data_number = 0
     #initating 3 output files as dictionaries
