@@ -6,7 +6,6 @@ import couchdb
 import requests
 import time
 import datetime
-
 #changing format and supressing warning if any
 warnings.simplefilter(action='ignore', category=FutureWarning)
 print("Reading file")
@@ -32,7 +31,6 @@ def node_process(twitter_file_path,c_start,c_end,b_size):
             batches.append([b_start, b_end - b_start])
             # print("add batched")
         print("Finish dividing")
-
     #reading the lines from batches
     with open(twitter_file_path, 'rb') as f:
 
