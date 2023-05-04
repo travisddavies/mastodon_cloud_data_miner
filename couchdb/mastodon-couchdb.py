@@ -19,15 +19,6 @@ if db_name in couch:
 else:
     db = couch.create(db_name)
 
-# Initialize geocoding API
-geolocator = Nominatim(user_agent='mastodon_streaming')
-
-# Helper function to get country from latitude and longitude coordinates
-def get_country_from_coords(latitude, longitude):
-    location = geolocator.reverse(f"{latitude}, {longitude}")
-    if location and location.raw.get('address'):
-        return location.raw['address'].get('country')
-    return None
 
 # chatgpt
 def datetime_to_str(obj):
@@ -54,16 +45,6 @@ class Listener(StreamListener):
         cont_text = BeautifulSoup(content, 'html.parser').get_text()
 
         if lang == 'en':
-            print(json.dumps(status, indent=2, sort_keys=True, default=datetime_to_str))
-
-            # Get country information from location details
-            country = None
-            longitude = None
-            latitude = None
-            if status.get('geo') and 'coordinates' in status['geo']:
-                latitude, longitude = status['geo']['coordinates']
-                country = get_country_from_coords(latitude, longitude)
-
             # Save to CouchDB
             data = {
                 '_id': str(status['id']),
@@ -71,10 +52,7 @@ class Listener(StreamListener):
                 'plain_text_content': cont_text,
                 'created_at': status['created_at'].isoformat(),
                 'username': status['account']['username'],
-                'tags': [tag.get('name') for tag in status.get('tags', [])],
-                'country': country,
-                'latitude': latitude, # added line
-                'longitude': longitude # added line
+                'tags': [tag.get('name') for tag in status.get('tags', [])]
             }
             db.save(data)
 
