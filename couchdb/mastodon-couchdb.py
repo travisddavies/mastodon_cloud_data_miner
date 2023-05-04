@@ -33,28 +33,19 @@ m = Mastodon(
 
 class Listener(StreamListener):
     def on_update(self, status):
-        content = status.get('content', '')
-
-        # Check language of content
-        try:
-            lang = detect(content)
-        except:
-            lang = None
-        
+        content = status.get('content', '')       
         # Convert content into plain text
         cont_text = BeautifulSoup(content, 'html.parser').get_text()
-
-        if lang == 'en':
-            # Save to CouchDB
-            data = {
-                '_id': str(status['id']),
-                'content': content,
-                'plain_text_content': cont_text,
-                'created_at': status['created_at'].isoformat(),
-                'username': status['account']['username'],
-                'tags': [tag.get('name') for tag in status.get('tags', [])]
-            }
-            db.save(data)
+        # Save to CouchDB
+        data = {
+            '_id': str(status['id']),
+            'content': content,
+            'plain_text_content': cont_text,
+            'created_at': status['created_at'].isoformat(),
+            'username': status['account']['username'],
+            'tags': [tag.get('name') for tag in status.get('tags', [])]
+        }
+        db.save(data)
 
 def main():
     m.stream_public(Listener())
