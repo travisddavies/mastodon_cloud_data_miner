@@ -12,4 +12,8 @@ Virtual machine from virtual box set up for trial: if ansible script is proper i
 
 # set up security group for every folder
 sudo chgrp ubuntu /directory/path
+
 sudo chown ubuntu /directory/path
+
+# check couchdb from local
+ssh -i key.pem -L 8888:localhost:5984 ubuntu@172.26.132.82
