@@ -1,0 +1,56 @@
+---
+- hosts: multi
+  gather_facts: yes
+  become: yes
+  vars:
+    rpm_key_url: https://download.docker.com/linux/ubuntu/gpg
+    rpm_key_file: /etc/apt/keyrings/docker.gpg
+  tasks:
+    - name: remove old docker
+      apt:
+        name: 
+          - docker
+          - docker-engine
+          - docker.io
+          - containerd
+          - runc
+        state: absent
+        update_cache: yes
+    - name: Add Docker’s official GPG key
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+        state: present
+    - name: install keyrings
+      become: yes
+      file:
+        path: /etc/apt/keyrings
+        mode: 0755
+        state: directory
+    - name: get gpg key
+      apt_key: 
+        url: "{{ rpm_key_url }}"
+        state: present
+    - name: set up repository docker
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu bionic stable
+        state: present
+    - name: install docker
+      apt:
+        name: "{{item}}"
+        state: latest
+        update_cache: yes
+      loop:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+
+
+
+      
+
+
+
+
