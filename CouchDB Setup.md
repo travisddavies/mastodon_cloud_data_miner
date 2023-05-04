@@ -9,3 +9,7 @@ Set up groups for instance 1,2,3 to save duplicated data in case the server is d
 
 # Ansible Set up
 Virtual machine from virtual box set up for trial: if ansible script is proper in virtual machine
+
+# set up security group for every folder
+sudo chgrp ubuntu /directory/path
+sudo chown ubuntu /directory/path

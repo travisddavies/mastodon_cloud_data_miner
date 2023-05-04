@@ -3,8 +3,6 @@ from bs4 import BeautifulSoup
 import json
 import couchdb
 import datetime
-from langdetect import detect
-from geopy.geocoders import Nominatim
 
 # CouchDB connection details
 couchdb_server = 'http://admin:password@localhost:5984/'
