@@ -3,6 +3,7 @@
   hosts: multi
   vars_files:
     - variables/mrc.yaml
+    - variables/docker.yaml
   gather_facts: yes
   become: yes
   roles:
@@ -23,7 +24,7 @@
   become: yes
   hosts: db 
   vars_files:
-    - variables/mrc.yaml
+    - variables/couchdb.yaml
   roles:
     - couchdb 
 
@@ -31,7 +32,7 @@
   become: yes
   hosts: worker 
   vars_files:
-    - variables/mrc.yaml
+    - variables/couchdb.yaml
   roles:
     - cluster
 

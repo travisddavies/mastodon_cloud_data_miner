@@ -2,7 +2,7 @@
 availability_zone: melbourne-qh2-uom
 instance_flavor: uom.general.1c4g
 instance_image: 51036d25-0b24-4dbc-bd08-68eec606b582
-instance_key_name: ~/.ssh/tddavie-mrc-key.pem
+instance_key_name: ~/.ssh/mrc.pem
 instance_network: qh2-uom-internal
 
 public_keys:
@@ -34,16 +34,22 @@ volumes:
 # Security group
 security_groups:
   - name: ssh
-    description: "Security group for SSH access"
+    description: "Security group for ssh"
     protocol: tcp
-    port_range_min: 22
-    port_range_max: 22
-    remote_ip_prefix: 0.0.0.0/0
+    ssh_port_range_min: 22
+    ssh_port_range_max: 22
   - name: http
     description: "Security group for HTTP"
     protocol: tcp
     port_range_min: 80
     port_range_max: 80
+    remote_ip_prefix: 0.0.0.0/0
+  - name: couchdb
+    description: "Security group for couchdb"
+    couchdb_port: 5984
+    cluster_port: 4369
+    cluster_comm_port_range_min: 9100
+    cluster_comm_port_range_max: 9200
     remote_ip_prefix: 0.0.0.0/0
 
 # Instance
@@ -54,42 +60,5 @@ instances:
     volumes: "data@instance-02"
   - name: instance-03
     volumes: "data@instance-03"
-
-docker:
-  rpm_key_url: https://download.docker.com/linux/ubuntu/gpg
-  rpm_key_file: /etc/apt/keyrings/docker.gpg
-  repo: deb https://download.docker.com/linux/ubuntu bionic stable
-  remove_module:
-    - name: docker
-    - name: docker-engine
-    - name: docker.io
-    - name: containerd
-    - name: runc
-  install_module:
-    - name: docker-ce
-    - name: docker-ce-cli
-    - name: containerd.io
-    - name: docker-buildx-plugin
-    - name: docker-compose-plugin
-
-bind_mount_path: 
-  src: /home/vagrant/data/couchdb/etc
-  dst: /opt/couchdb/etc/local.d
-
-user:
-  username: admin 
-  password: password
-default_databases:
-  - _users
-  - _replicator 
-  - _global_changes
-master_node: "192.168.60.4"
-finishing_node: "192.168.60.6"
-
-json:
-  - body: "{\"action\": \"enable_cluster\", \"bind_address\":\"0.0.0.0\",\
-          \"username\": \"{{ user.username }}\", \"password\":\"{{ user.password }}\", \"port\": \"5984\",\
-          \"remote_node\": \"{{ inventory_hostname }}\", \"node_count\": \"3\",\
-          \"remote_current_user\":\"{{ user.username }}\", \"remote_current_password\":\"{{ user.password }}\"}"
-  - body: "{\"action\": \"add_node\", \"host\":\"{{ inventory_hostname }}\",\
-          \"port\": \"5984\", \"username\": \"{{ user.username }}\", \"password\":\"{{ user.password }}\"}"
+  - name: instance-04
+    volumes: "data@instance-04"

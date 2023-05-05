@@ -1,7 +1,7 @@
 ---    
 - name: connect all nodes to master node 
   uri: 
-    url: "http://{{ master_node }}:5984/_cluster_setup"
+    url: "http://{{ groups.master[0] }}:5984/_cluster_setup"
     user: "{{ user.username }}"
     password: "{{ user.password }}"
     force_basic_auth: yes 
@@ -18,7 +18,7 @@
 
 - name: complete the clustering
   uri: 
-    url: "http://{{ master_node }}:5984/_cluster_setup"
+    url: "http://{{ groups.master[0] }}:5984/_cluster_setup"
     user: "{{ user.username }}"
     password: "{{ user.password }}"
     force_basic_auth: yes 
@@ -29,4 +29,20 @@
     headers:
       Content-Type: "application/json"    
     body: '{"action": "finish_cluster"}'
-  delegate_to: "{{ finishing_node }}"
+  delegate_to: "{{ groups.worker[0] }}"
+
+- name: ensure the cluster worked
+  uri:
+    user: "{{ user.username }}"
+    password: "{{ user.password }}"
+    url: "http://{{ groups.master[0] }}:{{ couchdb_port }}/_membership"
+    method: GET
+    status_code: 200
+    force_basic_auth: yes
+  register: result
+  delegate_to: "{{ groups.worker[0] }}"
+
+- name: print result
+  debug: 
+    msg: "{{ result.json }}"
+  delegate_to: worker[0]
