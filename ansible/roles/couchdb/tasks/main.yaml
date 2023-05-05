@@ -15,7 +15,6 @@
     image: couchdb:latest
     name: "couchdb"
     volumes: "{{ bind_mount_path.src }}:{{ bind_mount_path.dst }}"
-
     ports: 
       - "{{ couchdb_port }}:{{ couchdb_port }}"
       - "{{ cluster_comm_port_range_min }}:{{ cluster_comm_port_range_min }}"
@@ -35,7 +34,6 @@
     password: "{{ user.password }}"
     force_basic_auth: yes 
     method: PUT 
-
     status_code: 
       - 201
       - 412
