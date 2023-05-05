@@ -23,9 +23,9 @@
       ERL_FLAGS: '-setcookie "a192aeb9904e6590849337933b000c99" -name "couchdb@{{ inventory_hostname }}'
     state: started
 
-- name: pause set up for 30 seconds
+- name: pause set up for 10 seconds
   pause: 
-    seconds: 30
+    seconds: 10
 
 - name: set up default databases
   uri:

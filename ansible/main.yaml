@@ -30,7 +30,8 @@
 
 - name: Set up cluster
   become: yes
-  hosts: worker 
+  hosts: 
+    - sender
   vars_files:
     - variables/couchdb.yaml
   roles:
