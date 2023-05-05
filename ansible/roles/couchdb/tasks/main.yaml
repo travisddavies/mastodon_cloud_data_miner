@@ -1,3 +1,49 @@
 ---
-- name: Install couchdb 
-  snap: name=couchdb state=present
+- name: ensure mount binding directory exists 
+  file: 
+    path: "{{ bind_mount_path.src }}"
+    recurse: yes
+    state: directory
+
+- name: copy docker.ini file to server
+  copy:
+    src: ./docker.ini
+    dest: "{{ bind_mount_path.src }}/docker.ini"
+
+- name: ensure couchdb image created
+  docker_container:
+    image: couchdb:latest
+    name: "couchdb"
+    volumes: "{{ bind_mount_path.src }}:{{ bind_mount_path.dst }}"
+    ports: 
+      - "5984:5984"
+      - "9100:9100"
+      - "4369:4369"
+    env:
+      ERL_FLAGS: '-setcookie "a192aeb9904e6590849337933b000c99" -name "couchdb@{{ inventory_hostname }}'
+    state: started
+
+- name: ensure the settings worked
+  uri:
+    user: "{{ user.username }}"
+    password: "{{user.password}}"
+    url: "http://{{ inventory_hostname }}:5984/_membership"
+    method: GET
+    status_code: 200
+    force_basic_auth: yes
+  register: result
+- name: print result
+  debug: 
+    msg: "{{ result.json }}"
+
+- name: set up default databases
+  uri:
+    url: "http://{{ inventory_hostname }}:5984/{{ item }}"
+    user: "{{ user.username }}"
+    password: "{{ user.password }}"
+    force_basic_auth: yes 
+    method: PUT 
+    status_code: 
+      - 201
+      - 412
+  with_items: "{{ default_databases }}"

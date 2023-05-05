@@ -1,15 +1,16 @@
 ---
-- name: Set up instances for all instances
+- name: Set up modules for all instances
   hosts: multi
   vars_files:
     - variables/mrc.yaml
-  gather_facts: true
+  gather_facts: yes
   become: yes
   roles:
     - role: common
     - role: public_keys
+    - role: docker
 
-- name: Set up modules for app servers
+- name: Set up modules for app server
   hosts: app
   vars_files:
     - variables/mrc.yaml
@@ -18,10 +19,19 @@
     - role: nodeJS
     - role: react
 
-- name: Set up modules for db servers
+- name: Set up couchdb 
+  become: yes
   hosts: db 
   vars_files:
     - variables/mrc.yaml
-  become: yes 
-  roles:  
-    - role: couchdb
+  roles:
+    - couchdb 
+
+- name: Set up cluster
+  become: yes
+  hosts: worker 
+  vars_files:
+    - variables/mrc.yaml
+  roles:
+    - cluster
+

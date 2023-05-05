@@ -1,0 +1,32 @@
+---    
+- name: connect all nodes to master node 
+  uri: 
+    url: "http://{{ master_node }}:5984/_cluster_setup"
+    user: "{{ user.username }}"
+    password: "{{ user.password }}"
+    force_basic_auth: yes 
+    method: POST
+    status_code: 
+      - 201
+      - 409
+      - 503
+    headers:
+      Content-Type: "application/json"
+    body_format: json
+    body: "{{ item.body }}"
+  loop: "{{ json }}"
+
+- name: complete the clustering
+  uri: 
+    url: "http://{{ master_node }}:5984/_cluster_setup"
+    user: "{{ user.username }}"
+    password: "{{ user.password }}"
+    force_basic_auth: yes 
+    method: POST
+    status_code: 
+      - 201
+      - 400
+    headers:
+      Content-Type: "application/json"    
+    body: '{"action": "finish_cluster"}'
+  delegate_to: "{{ finishing_node }}"
