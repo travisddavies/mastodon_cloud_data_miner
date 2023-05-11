@@ -4,7 +4,7 @@ import os
 
 abs_folder = os.listdir('/home/ubuntu/data/ABS Data by Region/csv/')
 
-couch = couchdb.Server('http://admin:password@172.26.132.147:5984')
+couch = couchdb.Server('http://admin:password@localhost:5984/')
 
 # create DB for ABS Data and Save it
 dbname = 'abs'
@@ -21,8 +21,14 @@ for filename in abs_folder:
         reader = csv.DictReader(csvfile)
         for row in reader:
             # print(row)
-            row['location'] =location
-            abs_data.append(row)
+            for key, value in row.items():
+                try:
+                    row[key] = float(value)
+                except ValueError:
+                    pass  # Ignore non-float values
+            new_row = {key.replace(' ', '_'): value for key, value in row.items()}
+            new_row['location'] =location
+            abs_data.append(new_row)
             # db.save(row)
 db.update(abs_data)
 
@@ -38,7 +44,14 @@ with open('/home/ubuntu/data/SUDO/abs_regional_population_summary_lga_2019-91798
         reader = csv.DictReader(csvfile)
         for row in reader:
             # print(row)
-            sudo_data_2019.append(row)
+            for key, value in row.items():
+                try:
+                    row[key] = float(value)
+                except ValueError:
+                    pass  # Ignore non-float values
+            new_row = {key.replace(' ', ''): value for key, value in row.items()}
+            # print(new_row)
+            sudo_data_2019.append(new_row)
             # db.save(row)
 db.update(sudo_data_2019)
 
@@ -54,8 +67,12 @@ with open('/home/ubuntu/data/SUDO/abs_regional_population_age_sex_lga_2020-55033
         reader = csv.DictReader(csvfile)
         for row in reader:
             # print(row)
-            sudo_data_2020.append(row)
+            for key, value in row.items():
+                try:
+                    row[key] = float(value)
+                except ValueError:
+                    pass  # Ignore non-float values
+            new_row = {key.replace(' ', ''): value for key, value in row.items()}
+            sudo_data_2020.append(new_row)
             # db.save(row)
 db.update(sudo_data_2020)
-
-
