@@ -7,6 +7,8 @@
   gather_facts: yes
   become: yes
   roles:
+    - role: public_keys
+    - role: volume
     - role: common
     - role: public_keys
     - role: docker
@@ -30,8 +32,7 @@
 
 - name: Set up cluster
   become: yes
-  hosts: 
-    - sender
+  hosts: sender
   vars_files:
     - variables/couchdb.yaml
   roles:
