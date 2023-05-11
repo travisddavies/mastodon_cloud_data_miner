@@ -1,5 +1,5 @@
 bind_mount_path: 
-  src: /home/vagrant/data/couchdb/etc
+  src: /home/{{ ansible_user }}/data/couchdb/etc
   dst: /opt/couchdb/etc/local.d
 
 couchdb_port: 5984
