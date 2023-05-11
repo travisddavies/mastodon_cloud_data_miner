@@ -1,7 +1,12 @@
 ---
 - name: Add private key to instances
-  lineinfile:
-    dest: ~/.ssh/authorized_keys
-    regex: "{{ item.regex }}"
-    line:  "{{ item.key }}"
-  loop: "{{ public_keys }}"
+  authorized_key:
+    user: ubuntu 
+    state: present 
+    key: '{{ item }}'
+  with_file:
+    - public_keys/pubkey1
+    - public_keys/pubkey2
+    - public_keys/pubkey3
+    - public_keys/pubkey4
+    - public_keys/pubkey5
