@@ -66,13 +66,10 @@ const mapFx = function (doc) {
   fag = ['fag', 'fag1t', 'faget', 'fagg1t', 'faggit', 'faggot', 'fagit', 'fags', 'fagz', 'faig', 'faigs', 'g00k'].map(function (x) {
     return x.toLowerCase()
   })
-  fuck = ['Phuc', 'Phuck', 'Phuk', 'Phuker', 'Phukker', 'f u c k', 'f u c k e r', 'flipping the bird', 'fuck', 'fucker', 'fuckin', 'fucking', 'fucks', 'Fudge Packer', 'fuk', 'Fukah', 'Fuken', 'fuker', 'Fukin', 'Fukk', 'Fukkah', 'Fukken', 'Fukker', 'Fukkin'].map(function (x) {
+  fuck = ['f u c k', 'f u c k e r', 'flipping the bird', 'fuck', 'fucker', 'fuckin', 'fucking', 'fucks', 'Fudge Packer', 'fuk', 'Fukah', 'Fuken', 'fuker', 'Fukin', 'Fukk', 'Fukkah', 'Fukken', 'Fukker', 'Fukkin'].map(function (x) {
     return x.toLowerCase()
   })
-  mf = ['Motha Fucker', 'Motha Fuker', 'Motha Fukkah', 'Motha Fukker', 'Mother Fucker', 'Mother Fukah', 'Mother Fuker', 'Mother Fukkah', 'Mother Fukker', 'mother-fucker', 'Mutha Fucker', 'Mutha Fukah', 'Mutha Fuker', 'Mutha Fukkah', 'Mutha Fukker'].map(function (x) {
-    return x.toLowerCase()
-  })
-  shit = ['Sh!t', 'sh1t', 'sh1ter', 'sh1ts', 'sh1tter', 'sh1tz', 'shit', 'shits', 'shitter', 'Shitty', 'Shity', 'shitz', 'Shyt', 'Shyte', 'Shytty', 'Shyty', 'skanck', 'skank', 'skankee', 'skankey', 'skanks', 'Skanky', 'slut', 'sluts', 'Slutty', 'slutz'].map(function (x) {
+  shit = ['Sh!t', 'sh1t', 'sh1ter', 'sh1ts', 'sh1tter', 'sh1tz', 'shit', 'shits', 'shitter', 'Shitty', 'Shity', 'shitz', 'Shyt', 'Shyte', 'Shytty', 'Shyty'].map(function (x) {
     return x.toLowerCase()
   })
 
@@ -82,7 +79,6 @@ const mapFx = function (doc) {
   regex_cunt = new RegExp("\\b(" + cunt.join("|") + ")\\b")
   regex_fag = new RegExp("\\b(" + fag.join("|") + ")\\b")
   regex_fuck = new RegExp("\\b(" + fuck.join("|") + ")\\b")
-  regex_mf = new RegExp("\\b(" + mf.join("|") + ")\\b")
   regex_shit = new RegExp("\\b(" + shit.join("|") + ")\\b")
 
   if (vic_no === 1) {
@@ -135,13 +131,6 @@ const mapFx = function (doc) {
         emit([bbox, place_name, 'fuck'], 1)
       } else {
         emit('fuck', 1)
-      }
-    }
-    if (text.match(regex_mf) != null) {
-      if (state === 1) {
-        emit([bbox, place_name, 'mother fucker'], 1)
-      } else {
-        emit('mother fucker', 1)
       }
     }
     if (text.match(regex_shit) != null) {
