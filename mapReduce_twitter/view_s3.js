@@ -48,7 +48,7 @@ const mapFx = function (doc) {
   matching_rule_tag = correctFormat(doc.matching_rule_tag)
   hashtags = correctFormat(doc.hashtags)
 
-  if (state == 'victoria') {
+  if (state == 'victoria' && city_town != null) {
     for (keyword of keywords) {
       if (tags.includes(keyword) ||
         tokens.includes(keyword) ||
