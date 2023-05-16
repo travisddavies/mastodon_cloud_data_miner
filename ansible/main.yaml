@@ -38,3 +38,20 @@
   roles:
     - cluster
 
+- name: Set up load balancer
+  become: yes
+  hosts: app 
+  vars_files:
+    - variables/nginx.yaml
+  roles:
+    - nginx
+
+- name: Set up databases
+  hosts: app 
+  vars_files:
+    - variables/couchdb.yaml
+    - variables/mrc.yaml
+  roles:
+    - database
+    - permission
+    - twitter_processor
