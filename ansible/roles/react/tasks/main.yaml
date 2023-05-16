@@ -1,6 +1,0 @@
----
-- name: install npm
-  apt: name=npm state=present
-
-- name: install React
-  npm: name=create-react-app global=yes state=present
