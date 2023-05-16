@@ -1,17 +1,10 @@
 ---
-- name: Change ownership of directory
-  hosts: multi
-  gather_facts: false
-  become: true
-  vars:
-    directory_path: "/home/ubuntu/data"
-  tasks:
-    - name: Change group ownership
-      command: chgrp ubuntu "{{ directory_path }}"
-      become_user: root
-      become_method: sudo
+- name: Change group ownership
+  command: chgrp {{ ansible_user }} {{ directory_path }}
+  become_user: root
+  become_method: sudo
 
-    - name: Change user ownership
-      command: chown ubuntu "{{ directory_path }}"
-      become_user: root
-      become_method: sudo
+- name: Change user ownership
+  command: chown {{ ansible_user }} {{ directory_path }}
+  become_user: root
+  become_method: sudo

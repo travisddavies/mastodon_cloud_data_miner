@@ -65,3 +65,5 @@ instances:
 mount:
   path: /home/{{ ansible_user }}/data 
   src: /dev/vdb
+
+directory_path: "/home/ubuntu/data"

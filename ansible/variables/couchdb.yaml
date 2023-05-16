@@ -24,3 +24,11 @@ json:
   - body: "{\"action\": \"add_node\", \"host\":\"{{ inventory_hostname }}\",\
           \"port\": \"{{ couchdb_port }}\", \"username\": \"{{ user.username }}\", \"password\":\"{{ user.password }}\"}"
 
+database: 
+  - twitter 
+  - mastodon_data 
+  - sudo_summary_2019 
+  - abs
+  - sudo_median_2021
+  - sudo_population_2020
+  - sudo_environment_2018

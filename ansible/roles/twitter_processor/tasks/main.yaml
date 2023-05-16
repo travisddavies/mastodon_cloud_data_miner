@@ -1,0 +1,9 @@
+- name: copy twitter_processor file to server
+  copy:
+    src: ./{{ item }}
+    dest: "{{ directory_path }}/{{ item }}"
+  with_items:
+    - downsizing_couch.py
+    - au.json
+
+

@@ -1,0 +1,25 @@
+- variables: 
+  working_directory: "{{ directory_path }}/images/flask"
+- name: create flask directory 
+  file:
+    path: working_directory
+    recurse: yes
+    state: directory
+
+- name: build flask image
+  docker_image: 
+    name: flask
+    tag: latest 
+    source: build 
+    build:
+      path: "{{ working_directory }}"
+      pull: false 
+    state: present
+
+- name: run a flask container
+  docker_container:
+    image: flask:latest 
+    name: flask
+    state: started 
+    command: python3 downsizing_couch.py
+    ports: 8081:8081
