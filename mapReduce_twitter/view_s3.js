@@ -49,7 +49,7 @@ const mapFx = function (doc) {
   hashtags = correctFormat(doc.hashtags)
 
   if (state == 'victoria' && city_town != null) {
-    for (keyword of keywords) {
+    for (const keyword of keywords) {
       if (tags.includes(keyword) ||
         tokens.includes(keyword) ||
         domain_name.includes(keyword) ||
