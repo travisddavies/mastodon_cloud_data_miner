@@ -53,10 +53,10 @@ design_docs:
     db_name: twitter 
     filename: view_s3.js
     json: view_s3.json
-  - name: view_emoji 
-    db_name: twitter 
-    filename: mastodon_view.js
-    json: mastodon_view.json
+  # - name: view_emoji 
+  #   db_name: mastodon_data
+  #   filename: mastodon_view.js
+  #   json: mastodon_view.json
   - name: view_victoria_count
     db_name: twitter 
     filename: victoria_tweets_count.js
