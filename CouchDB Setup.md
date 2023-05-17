@@ -17,3 +17,10 @@ sudo chown ubuntu /directory/path
 
 # check couchdb from local
 ssh -i key.pem -L 8888:localhost:5984 ubuntu@172.26.132.82
+
+
+# create docker image
+sudo docker build -t image-name .
+sudo docker run -d image-name
+
+# check ansible script of mastodon-client

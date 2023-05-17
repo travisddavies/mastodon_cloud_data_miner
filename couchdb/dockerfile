@@ -1,0 +1,11 @@
+# Use an official alpine runtime as the base image
+FROM python:3.9-alpine3.17
+
+# Set the working directory in the container
+WORKDIR /app
+
+COPY . /app
+RUN pip install -r requirements.txt
+
+EXPOSE 8000
+ENTRYPOINT [ "python3", "mastodon-couchdb.py", "runserver" ]

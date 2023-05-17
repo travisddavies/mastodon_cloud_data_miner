@@ -5,7 +5,7 @@ import couchdb
 import datetime
 
 # CouchDB connection details
-couchdb_server = 'http://admin:password@localhost:5984/'
+couchdb_server = 'http://admin:password@172.26.132.152:8081'
 
 # Connect to CouchDB
 couch = couchdb.Server(couchdb_server)
