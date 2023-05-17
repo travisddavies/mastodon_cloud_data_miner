@@ -38,16 +38,16 @@
   roles:
     - nginx
 
-- name: Set up databases
-  hosts: app 
-  become: yes
-  vars_files:
-    - variables/couchdb.yaml
-    - variables/mrc.yaml
-  roles:
-    - database
-    - permission
-    - twitter_processor
+# - name: Set up databases
+#   hosts: app 
+#   become: yes
+#   vars_files:
+#     - variables/couchdb.yaml
+#     - variables/mrc.yaml
+#   roles:
+#     - database
+#     - permission
+#     - twitter_processor
 
 - name: set up docker swarm 
   hosts: all 
