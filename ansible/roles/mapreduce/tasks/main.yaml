@@ -1,4 +1,17 @@
 ---
+- name: Install Node.js
+  become: true
+  apt:
+    name: nodejs
+    state: present
+
+- name: copy mapreduce files to server 
+  become: true 
+  copy:   
+    src: "{{ item.filename }}"
+    dest: /home/data/{{ item.filename }}
+  loop: "{{ design_docs }}"
+
 - name: create json files
   command: node "{{ item.filename }}"
   loop: "{{ design_docs }}"
