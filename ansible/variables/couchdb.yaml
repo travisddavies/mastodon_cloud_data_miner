@@ -24,7 +24,7 @@ json:
   - body: "{\"action\": \"add_node\", \"host\":\"{{ inventory_hostname }}\",\
           \"port\": \"{{ couchdb_port }}\", \"username\": \"{{ user.username }}\", \"password\":\"{{ user.password }}\"}"
 
-database: 
+database:
   - twitter 
   - mastodon_data 
   - sudo_summary_2019 
@@ -32,3 +32,47 @@ database:
   - sudo_median_2021
   - sudo_population_2020
   - sudo_environment_2018
+
+twitter_design_docs:
+  - name: 
+
+design_docs:
+  - name: view_state
+    db_name: twitter
+    filename: state_tweets.js
+    json: view_state.json
+  - name: view_climate
+    db_name: twitter 
+    filename: view_s1.js
+    json: view_s1.json
+  - name: view_emoji
+    db_name: twitter 
+    filename: view_s2.js
+    json:  view_emoji.json
+  - name: view_coffee
+    db_name: twitter 
+    filename: view_s3.js
+    json: view_s3.json
+  - name: view_emoji 
+    db_name: twitter 
+    filename: mastodon_view.js
+    json: mastodon_view.json
+  - name: view_victoria_count
+    db_name: twitter 
+    filename: victoria_tweets_count.js
+  # - name: view_sudo_2020
+  #   db_name: sudo_population_2020
+  #   filename: sudo_2020_view.js
+  #   json: sudo_2020_view.json
+  # - name: view_sudo_2019
+  #   db_name: sudo_summary_2019
+  #   filename: sudo_2019_view.js
+  #   json: sudo_2019_view.json
+  # - name: view_sudo_median_2021
+  #   db_name: sudo_median_2021 
+  #   filename: sudo_2021_median_view.js
+  #   json: sudo_2021_median_view.json
+  # - name: view_sudo_environment_2018
+  #   db_name: sudo_environment_2018
+  #   filename: sudo_environment_view.js
+  #   json: sudo_environment_view.json
