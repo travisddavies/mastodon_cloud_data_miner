@@ -1,0 +1,10 @@
+---
+- name: create json files
+  command: node "{{ item.filename }}"
+  loop: "{{ design_docs }}"
+
+- name: Run MapReduce on couchdb
+  command: >
+    curl -X PUT "http://{{ user.username }}:{{ user.password }}@{{ groups['app'][0] }}:{{ nginx_port }}/{{ item.db_name }}/_design/{{ item.name }}"
+    -H "Content-Type: application/json" --data-binary "@{{ item.json }}"
+  loop: "{{ design_docs }}"
