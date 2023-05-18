@@ -1,0 +1,10 @@
+{"rows":[
+    {"key":["australian capital territory"],"value":[131238,235817.2,16.4,1]},
+    {"key":["new south wales"],"value":[7450766,80081078.9,2154.3,129]},
+    {"key":["northern territory"],"value":[33483720,134835064.3,448.6,19]},
+    {"key":["queensland"],"value":[15004946,173017208.70000002,1285.2,78]},
+    {"key":["south australia"],"value":[29629474,98427491.39999998,792.6,71]},
+    {"key":["tasmania"],"value":[2831365,6801750.4,247.2,29]},
+    {"key":["victoria"],"value":[3978623,22749563.400000002,1114.1,80]},
+    {"key":["western australia"],"value":[59008668,252664624.79999998,1666.4,137]}
+    ]}
