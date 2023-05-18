@@ -9,7 +9,7 @@ import couchdb
 admin = 'admin'
 password = 'password'
 # instance 3 @localhost:8080
-url = f'http://{admin}:{password}@localhost:8080/'
+url = f'http://{admin}:{password}@localhost:8081/'
 # get couchdb instance
 couch = couchdb.Server(url)
 
