@@ -3,24 +3,17 @@ from flask_restful import Api, Resource
 from flask_cors import CORS
 from views import *
 
+
 import couchdb
 
 # authentication
 admin = 'admin'
 password = 'password'
-# instance 3 @localhost:8080
+# instance 4
 url = f'http://{admin}:{password}@localhost:8081/'
 # get couchdb instance
 couch = couchdb.Server(url)
 
-# # indicate the db name
-# db_name = 'twitter'
-#
-# # if not exist, create one
-# if db_name not in couch:
-#     db = couch.create(db_name)
-# else:
-#     db = couch[db_name]
 
 app = Flask(__name__)
 api = Api(app)
@@ -74,40 +67,25 @@ def emoji_mastodon():
     view = get_emoji_mastodon()
     return view, 200
 
-# @app.route('/swear_total', methods=['GET'])
-# def swear_total():
-#     view = get_swear_total()
-#     return view, 200
-#
-# @app.route('/swear_state', methods=['GET'])
-# def swear_state():
-#     view = get_swear_state()
-#     return view, 200
-
-# @app.route('/swear_victoria', methods=['GET'])
-# def swear_victoria():
-#     view = get_swear_victoria()
-#     return view, 200
-
-@app.route('/state_population_male_female', methods=['GET'])
-def state_population_male_female():
+@app.route('/state_population_male_female_sudo', methods=['GET'])
+def state_population_male_female_sudo():
     view = get_state_population_with_gender()
     return view, 200
 
-@app.route('/local_population_male_female', methods=['GET'])
-def local_population_male_female():
+@app.route('/local_population_male_female_sudo', methods=['GET'])
+def local_population_male_female_sudo():
     view = get_local_population_with_gender()
     return view, 200
 
-@app.route('/local_median_age_and_weekly_income', methods=['GET'])
-def local_median_age_and_weekly_income():
+@app.route('/local_median_age_and_weekly_income_sudo', methods=['GET'])
+def local_median_age_and_weekly_income_sudo():
     view = get_local_age_and_weekly_income()
     return view, 200
 
-# @app.route('/climate_sentiments_csv', methods=['GET'])
-# def climate_sentiments_csv():
-#     return send_file('df_climate.csv'), 200
-
+@app.route('/environment_sudo', methods=['GET'])
+def environment_sudo():
+    view = get_environment()
+    return view, 200
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port='5000')
