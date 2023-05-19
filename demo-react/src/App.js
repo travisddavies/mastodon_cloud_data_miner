@@ -1,13 +1,13 @@
 //import logo from './logo.svg';
-// import './App.css';
-import 'path/to/antd.css';
+import './App.css';
+// import 'path/to/antd.css';
 
 import React from 'react';
 import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import FirstView from './components/FirstView';
-// import SecondView from './components/SecondView';
-// import ThirdView from './components/ThirdView';
+import SecondView from './components/SecondView';
+import ThirdView from './components/ThirdView';
 
 import { Layout } from 'antd';
 
@@ -26,8 +26,8 @@ const App = () => {
           <Route path="/" element={<h1>Welcome to HomePage</h1>} />
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/view1" element={<FirstView />} />
-          {/*<Route path="/view2" element={<SecondView />} />*/}
-          {/*<Route path="/view3" element={<ThirdView />} />*/}
+          <Route path="/view2" element={<SecondView />} />
+          <Route path="/view3" element={<ThirdView />} />
         </Routes>
       </div>
     </Router>
