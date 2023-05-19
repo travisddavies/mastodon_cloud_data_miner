@@ -1,5 +1,0 @@
-bind_mount_path: 
-  src: /home/{{ ansible_user }}/data/nginx/etc/conf.d
-  dst: /etc/nginx/conf.d
-
-nginx_port: 8081
