@@ -1,0 +1,82 @@
+.quiz-container {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 65vh;
+}
+
+.quiz-container .app {
+  background-color: whitesmoke;
+  width: 600px;
+  min-height: 300px;
+  height: min-content;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.quiz-container .score-section {
+  display: flex;
+  font-size: 24px;
+  align-items: center;
+}
+
+.quiz-container .question-section {
+  width: 80%;
+  position: relative;
+}
+
+.quiz-container .question-count {
+  margin-bottom: 20px;
+}
+
+.quiz-container .question-count span {
+  font-size: 28px;
+}
+
+.quiz-container .question-text {
+  margin-bottom: 12px;
+}
+
+.quiz-container .answer-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quiz-container button {
+  width: 80%;
+  font-size: 16px;
+  color: antiquewhite;
+  background-color: cornflowerblue;
+  border-radius: 15px;
+  display: flex;
+  padding: 5px;
+  justify-content: flex-start;
+  align-items: center;
+  border: 5px solid royalblue;
+  cursor: pointer;
+}
+
+.quiz-container button:hover {
+  background-color: #555e7d;
+}
+
+.quiz-container button:focus {
+  outline: none;
+}
+
+.quiz-container button.wrong {
+  background-color: #ff3333;
+}
+
+.quiz-container button.wrong:hover {
+  background-color: #ff5555;
+}
+
+
+

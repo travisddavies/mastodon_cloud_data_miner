@@ -2,7 +2,7 @@
 
 const account = {
   displayName: 'Team 28',
-  photoURL: '/assets/images/avatars/avatar_default.jpg',
+  photoURL: '/assets/images/covers/cover_3.jpg',
 };
 
 export default account;

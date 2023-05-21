@@ -1,29 +1,17 @@
 ## Minimal [(Free version)](https://minimal-kit-react.vercel.app/)
 
+
 ![license](https://img.shields.io/badge/license-MIT-blue.svg)
 
 > Free React Admin Dashboard made with Material-UI components and React.
 
-![preview](public/assets/preview.jpg)
-
-| [Minimal Free](https://minimal-kit-react.vercel.app/) | [Minimal](https://material-ui.com/store/items/minimal-dashboard/) |
-| ----------------------------------------------------- | :---------------------------------------------------------------- |
-| **6** Demo pages                                      | **50+** demo pages                                                |
-| -                                                     | ✓ Multi-language                                                  |
-| -                                                     | ✓ Dark/Light Mode 🌓                                              |
-| -                                                     | ✓ [More components](https://minimals.cc/components)               |
-| -                                                     | ✓ Next.js version                                                 |
-| -                                                     | ✓ TypeScript version                                              |
-| -                                                     | ✓ Design files (Figma & Sketch)                                   |
-
-## Page demo
+## Page
 
 - [Dashboard](https://minimal-kit-react.vercel.app/dashboard/app)
-- [Users](https://minimal-kit-react.vercel.app/dashboard/user)
-- [Product](https://minimal-kit-react.vercel.app/dashboard/products)
-- [Blog](https://minimal-kit-react.vercel.app/dashboard/blog)
-- [Login](https://minimal-kit-react.vercel.app/login)
-- [Not Found](https://minimal-kit-react.vercel.app/404)
+- [Scenario1](https://minimal-kit-react.vercel.app/dashboard/s1)
+- [Scenario2](https://minimal-kit-react.vercel.app/dashboard/s2)
+- [Scenario3](https://minimal-kit-react.vercel.app/dashboard/s3)
+- [Quiz](https://minimal-kit-react.vercel.app/dashboard/quiz)
 
 ## Getting started
 
@@ -35,6 +23,9 @@
 
 Distributed under the MIT License. See [LICENSE](https://github.com/minimal-ui-kit/minimal.free/blob/main/LICENSE.md) for more information.
 
-## Contact us
 
-Email Us: support@minimals.cc
+## Acknowledgements
+This is [Minimal Dashboard](https://github.com/minimal-ui-kit/material-kit-react) Templates. We are very grateful to 
+minimal-ui-kit for developing and sharing their system with us for teaching and learning purposes.
+
+Using the tool AI (Chatgpt) help tidy up code and debug.
