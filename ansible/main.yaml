@@ -1,34 +1,36 @@
 ---
-- name: Set up modules for all instances
-  hosts: multi
-  vars_files:
-    - variables/mrc.yaml
-    - variables/docker.yaml
-  gather_facts: yes
-  become: yes
-  roles:
-    - role: public_keys
-    - role: chrony
-    - role: volume
-    - role: common
-    - role: public_keys
-    - role: docker
+# - name: Set up modules for all instances
+#   hosts: multi
+#   vars_files:
+#     - variables/mrc.yaml
+#     - variables/docker.yaml
+#   gather_facts: yes
+#   become: yes
+#   roles:
+#     - role: public_keys
+#     - role: chrony
+#     - role: volume
+#     - role: common
+#     - role: public_keys
+#     - role: docker
+#     - role: working_directory 
+#     - role: permission
 
-- name: Set up couchdb 
-  become: yes
-  hosts: db 
-  vars_files:
-    - variables/couchdb.yaml
-  roles:
-    - couchdb 
+# - name: Set up couchdb 
+#   become: yes
+#   hosts: db 
+#   vars_files:
+#     - variables/couchdb.yaml
+#   roles:
+#     - couchdb 
 
-- name: Set up cluster
-  become: yes
-  hosts: sender
-  vars_files:
-    - variables/couchdb.yaml
-  roles:
-    - cluster
+# - name: Set up cluster
+#   become: yes
+#   hosts: sender
+#   vars_files:
+#     - variables/couchdb.yaml
+#   roles:
+#     - cluster
 
 - name: Set up load balancer
   become: yes
@@ -38,19 +40,29 @@
   roles:
     - nginx
 
-# - name: Set up databases
-#   hosts: app 
-#   become: yes
-#   vars_files:
-#     - variables/couchdb.yaml
-#     - variables/mrc.yaml
-#   roles:
-#     - database
-#     - permission
-#     - twitter_processor
+- name: Set up databases
+  hosts: config
+  become: yes
+  vars_files:
+    - variables/couchdb.yaml
+    - variables/mrc.yaml
+  roles:
+    - database
+    # - expand_twitter_huge
+    - twitter_processor
+    - mapreduce
 
-- name: set up docker swarm 
-  hosts: all 
-  become: yes 
-  roles: 
-    - swarm
+- name: Set up databases
+  hosts: config
+  vars_files:
+    - variables/couchdb.yaml
+    - variables/mrc.yaml
+  roles:
+    - twitter_processor
+    - mapreduce
+
+# - name: set up docker swarm 
+#   hosts: all 
+#   become: yes 
+#   roles: 
+#     - swarm
