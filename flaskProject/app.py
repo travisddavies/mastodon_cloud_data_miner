@@ -1,52 +1,113 @@
-from flask import Flask, jsonify, request, send_file
-from flask_restful import Api, Resource
+from flask import Flask
+from flask_restful import Api
 from flask_cors import CORS
-from view_twitter import *
-import requests
+from views import *
+
 
 import couchdb
 
 # authentication
 admin = 'admin'
 password = 'password'
-# instance 3 @localhost:8080
-url = f'http://{admin}:{password}@localhost:8080/'
+# instance 4
+url = f'http://{admin}:{password}@localhost:8081/'
 # get couchdb instance
 couch = couchdb.Server(url)
 
-# # indicate the db name
-# db_name = 'twitter'
-#
-# # if not exist, create one
-# if db_name not in couch:
-#     db = couch.create(db_name)
-# else:
-#     db = couch[db_name]
 
 app = Flask(__name__)
 api = Api(app)
 CORS(app)
 
-# def get_sentiments():
-#     url = "http://admin:password@172.26.132.147:5984/twitter/_design/view_s1_design/_view/climate_filter?group=true&stale=update_after"
-#     response = requests.get(url)
-#     data = response.json()["rows"]
-#     return data
-
 @app.route('/')
 def root():
     return "COMP90024"
 
-@app.route('/climate_sentiments', methods=['GET'])
-def climate_sentiments():
-    view = get_sentiments()
+@app.route('/state_tweet_count', methods=['GET'])
+def state_tweet_count():
+    view = get_state_tweet_count()
     return view, 200
 
-@app.route('/climate_sentiments_csv', methods=['GET'])
-def climate_sentiments_csv():
-    return send_file('df_climate.csv'), 200
+@app.route('/tweet_number', methods=['GET'])
+def tweet_number():
+    view = get_state_tweet_number()
+    return view, 200
 
+@app.route('/victoria_tweet_count', methods=['GET'])
+def victoria_tweet_count():
+    view = get_victoria_tweet_count()
+    return view, 200
+
+@app.route('/topic_climate', methods=['GET'])
+def topic_climate():
+    view = get_climate()
+    return view, 200
+
+@app.route('/topic_climate_number', methods=['GET'])
+def topic_climate_number():
+    view = get_climate_number()
+    return view, 200
+
+@app.route('/topic_tesla_related_climate', methods=['GET'])
+def topic_tesla_related_climate():
+    view = get_climate_tesla()
+    return view, 200
+
+@app.route('/topic_coffee', methods=['GET'])
+def topic_coffee():
+    view = get_coffee()
+    return view, 200
+
+@app.route('/topic_coffee_number', methods=['GET'])
+def topic_coffee_number():
+    view = get_coffee_number()
+    return view, 200
+
+@app.route('/emoji_no_sentiment', methods=['GET'])
+def emoji_no_sentiment():
+    view = get_emoji_no_sentiment()
+    return view, 200
+@app.route('/emoji_total', methods=['GET'])
+def emoji_total():
+    view = get_emoji_total()
+    return view, 200
+
+@app.route('/emoji_with_sentiment', methods=['GET'])
+def emoji_with_sentiment():
+    view = get_emoji_yes_sentiment()
+    return view, 200
+
+@app.route('/emoji_usage', methods=['GET'])
+def emoji_usage():
+    view = get_emoji_usage()
+    return view, 200
+
+@app.route('/emoji_mastodon', methods=['GET'])
+def emoji_mastodon():
+    view = get_emoji_mastodon()
+    return view, 200
+
+@app.route('/state_population_male_female_sudo', methods=['GET'])
+def state_population_male_female_sudo():
+    view = get_state_population_with_gender()
+    return view, 200
+
+@app.route('/local_population_male_female_sudo', methods=['GET'])
+def local_population_male_female_sudo():
+    view = get_local_population_with_gender()
+    return view, 200
+
+@app.route('/local_median_age_and_weekly_income_sudo', methods=['GET'])
+def local_median_age_and_weekly_income_sudo():
+    view = get_local_age_and_weekly_income()
+    return view, 200
+
+@app.route('/environment_sudo', methods=['GET'])
+def environment_sudo():
+    view = get_environment()
+    return view, 200
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port='5000')
+
 
