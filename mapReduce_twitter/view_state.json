@@ -1,0 +1,1 @@
+{"views":{"state_tweets":{"map":"function (doc) {\n  state = doc.place_name['state']\n  emit(state, 1)\n}","reduce":"_sum"}}}
