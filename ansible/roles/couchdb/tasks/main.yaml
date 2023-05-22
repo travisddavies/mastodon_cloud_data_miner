@@ -1,20 +1,28 @@
 ---
-- name: ensure mount binding directory exists 
+- name: Create config mount directory
   file: 
     path: "{{ bind_mount_path.src }}"
     recurse: yes
     state: directory
 
-- name: copy docker.ini file to server
+- name: Create volume mount directory
+  file: 
+    path: "{{ volume_path.src }}"
+    recurse: yes
+    state: directory
+
+- name: Copy docker.ini to remote
   copy:
     src: ./docker.ini
     dest: "{{ bind_mount_path.src }}/docker.ini"
 
-- name: ensure couchdb image created
+- name: Start CouchDB image
   docker_container:
     image: couchdb:latest
     name: "couchdb"
-    volumes: "{{ bind_mount_path.src }}:{{ bind_mount_path.dst }}"
+    volumes: 
+      - "{{ bind_mount_path.src }}:{{ bind_mount_path.dst }}"
+      - "{{ volume_path.src }}:{{ volume_path.dst }}"
     ports: 
       - "{{ couchdb_port }}:{{ couchdb_port }}"
       - "{{ cluster_comm_port_range_min }}:{{ cluster_comm_port_range_min }}"
@@ -23,11 +31,11 @@
       ERL_FLAGS: '-setcookie "a192aeb9904e6590849337933b000c99" -name "couchdb@{{ inventory_hostname }}'
     state: started
 
-- name: pause set up for 10 seconds
+- name: Pause start up for 10s.
   pause: 
     seconds: 10
 
-- name: set up default databases
+- name: Set up default databases
   uri:
     url: "http://{{ inventory_hostname }}:{{ couchdb_port }}/{{ item }}"
     user: "{{ user.username }}"

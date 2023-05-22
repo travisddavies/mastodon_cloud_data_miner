@@ -1,5 +1,5 @@
 ---    
-- name: connect all nodes to config node 
+- name: Connect all nodes to config node 
   uri: 
     url: "http://{{ groups.config[0] }}:5984/_cluster_setup"
     user: "{{ user.username }}"
@@ -16,7 +16,7 @@
     body: "{{ item.body }}"
   loop: "{{ json }}"
 
-- name: complete the clustering
+- name: Complete the clustering
   uri: 
     url: "http://{{ groups.config[0] }}:5984/_cluster_setup"
     user: "{{ user.username }}"
@@ -31,7 +31,7 @@
     body: '{"action": "finish_cluster"}'
   delegate_to: "{{ groups.sender[0] }}"
 
-- name: ensure the cluster worked
+- name: Ensure the cluster worked
   uri:
     user: "{{ user.username }}"
     password: "{{ user.password }}"
@@ -42,7 +42,7 @@
   register: result
   delegate_to: "{{ groups.sender[0] }}"
 
-- name: print result
+- name: Print result
   debug: 
     msg: "{{ result.json }}"
   delegate_to: "{{ groups.sender[0] }}"

@@ -1,16 +1,16 @@
 ---
-- name: ensure mount binding directory exists 
+- name: Create mount binding directory
   file: 
     path: "{{ bind_mount_path.src }}"
     recurse: yes
     state: directory
 
-- name: copy default.conf file to server
+- name: Copy default.conf file to server
   copy:
     src: ./default.conf
     dest: "{{ bind_mount_path.src }}/default.conf"
 
-- name: ensure nginx image started
+- name: Start nginx image
   docker_container:
     image: nginx:latest
     name: "nginx"

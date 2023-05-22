@@ -1,5 +1,5 @@
 ---
-- name: remove old docker
+- name: Remove old docker
   apt:
     name: 
       - "{{ item.name }}"
@@ -17,11 +17,13 @@
   apt_key: 
     url: "{{ rpm_key_url }}"
     state: present
-- name: set up docker repository
+
+- name: Set up docker repository
   apt_repository:
     repo: "{{ repo }}"
     state: present
-- name: install docker
+  
+- name: Install docker
   apt:
     name: "{{ item.name }}"
     state: latest

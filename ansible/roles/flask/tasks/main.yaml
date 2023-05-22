@@ -1,20 +1,20 @@
-- name: create flask directory 
+- name: cCeate flask directory 
   file:
     path: "{{ image_directory }}/backend"
     recurse: yes
     state: directory
 
-- name: copy flask dockerfile
+- name: Copy flask dockerfile
   copy: 
     src: ./images/backend/Dockerfile
     dest: "{{ image_directory }}/backend/Dockerfile"
 
-- name: copy flaskProject
+- name: Copy flaskProject
   copy:
     src: flaskProject 
     dest: "{{ image_directory }}/backend/"
 
-- name: build flask image
+- name: Build flask image
   docker_image: 
     name: backend
     tag: latest 
@@ -24,7 +24,7 @@
       pull: false 
     state: present
 
-- name: run a flask container
+- name: Run a flask container
   docker_container:
     image: backend:latest 
     name: flask
