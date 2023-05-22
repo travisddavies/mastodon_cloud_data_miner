@@ -1,0 +1,151 @@
+import React, { useState } from 'react';
+
+export default function App() {
+	const questions = [
+		{
+			questionText: 'How many states/territories are there in Australia?',
+			answerOptions: [
+				{ answerText: '4', isCorrect: false },
+				{ answerText: '6', isCorrect: true },
+				{ answerText: '7', isCorrect: false },
+				{ answerText: '8', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'How many climate related tweets in our project?',
+			answerOptions: [
+				{ answerText: '12.68k', isCorrect: true },
+				{ answerText: '12.88k', isCorrect: false },
+				{ answerText: '14.48k', isCorrect: false },
+				{ answerText: '16.68k', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'Which city in Victoria has the highest number of coffee related tweets?',
+			answerOptions: [
+				{ answerText: 'Melbourne', isCorrect: false },
+				{ answerText: 'Ararat', isCorrect: false },
+				{ answerText: 'Sydney', isCorrect: false },
+				{ answerText: 'Wangaratta', isCorrect: true },
+			],
+		},
+		{
+			questionText: 'What is the name of the CCC lecturer?',
+			answerOptions: [
+				{ answerText: 'Roger', isCorrect: false },
+				{ answerText: 'James', isCorrect: false },
+				{ answerText: 'Richard', isCorrect: true },
+				{ answerText: 'Peter', isCorrect: false },
+			],
+		},
+		{
+			questionText: 'Could we get an H1?',
+			answerOptions: [
+				{ answerText: 'Yes!', isCorrect: true },
+				{ answerText: 'Yes!!', isCorrect: true },
+				{ answerText: 'Yes!!!', isCorrect: true },
+				{ answerText: 'Yes!!!!', isCorrect: true },
+			],
+		},
+	];
+
+	// const [currentQuestion, setCurrentQuestion] = useState(0);
+	// const [showScore, setShowScore] = useState(false);
+	// const [score, setScore] = useState(0);
+	//
+	// const handleAnswerOptionClick = (isCorrect) => {
+	// 	if (isCorrect) {
+	// 		setScore(score + 1);
+	// 	}
+	//
+	// 	const nextQuestion = currentQuestion + 1;
+	// 	if (nextQuestion < questions.length) {
+	// 		setCurrentQuestion(nextQuestion);
+	// 	} else {
+	// 		setShowScore(true);
+	// 	}
+	// };
+	// return (
+	// 	<div className='app'>
+	// 		{showScore ? (
+	// 			<div className='score-section'>
+	// 				You scored {score} out of {questions.length}
+	// 			</div>
+	// 		) : (
+	// 			<>
+	// 				<div className='question-section'>
+	// 					<div className='question-count'>
+	// 						<span>Question {currentQuestion + 1}</span>/{questions.length}
+	// 					</div>
+	// 					<div className='question-text'>{questions[currentQuestion].questionText}</div>
+	// 				</div>
+	// 				<div className='answer-section'>
+	// 					{questions[currentQuestion].answerOptions.map((answerOption) => (
+	// 						<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+	// 					))}
+	// 				</div>
+	// 			</>
+	// 		)}
+	// 	</div>
+	// );
+	const [currentQuestion, setCurrentQuestion] = useState(0);
+	const [showScore, setShowScore] = useState(false);
+	const [score, setScore] = useState(0);
+	const [wrongQuestions, setWrongQuestions] = useState([]);
+
+	const handleAnswerOptionClick = (isCorrect, questionIndex) => {
+	  if (!isCorrect) {
+		setWrongQuestions([...wrongQuestions, questionIndex]);
+	  }
+
+	  if (isCorrect) {
+		setScore(score + 1);
+	  }
+
+	  const nextQuestion = currentQuestion + 1;
+	  if (nextQuestion < questions.length) {
+		setCurrentQuestion(nextQuestion);
+	  } else {
+		setShowScore(true);
+	  }
+	};
+
+	return (
+	  <div className='app'>
+		{showScore ? (
+		  <div className='score-section'>
+			You scored {score} out of {questions.length}
+		  </div>
+		) : (
+		  <>
+			<div className='question-section'>
+			  <div className='question-count'>
+				<span>Question {currentQuestion + 1}</span>/{questions.length}
+			  </div>
+			  <div className='question-text'>{questions[currentQuestion].questionText}</div>
+			</div>
+			<div className='answer-section'>
+			  {questions[currentQuestion].answerOptions.map((answerOption, index) => (
+				<button
+				  onClick={() => handleAnswerOptionClick(answerOption.isCorrect, currentQuestion)}
+				  className={wrongQuestions.includes(currentQuestion) && !answerOption.isCorrect ? 'wrong' : ''}
+				  key={index}
+				>
+				  {answerOption.answerText}
+				</button>
+				//   <button
+				// 	  onClick={() => handleAnswerOptionClick(answerOption.isCorrect, currentQuestion)}
+				// 	  className={`${wrongQuestions.includes(currentQuestion) && !answerOption.isCorrect ? 'wrong' : ''} ${answerOption.isCorrect ? 'correct' : ''}`}
+				// 	  key={index}
+				// 	>
+				// 	  {answerOption.answerText}
+				// 	</button>
+
+			  ))}
+			</div>
+		  </>
+		)}
+	  </div>
+	);
+
+}

@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
 import './App.css';
+// import 'path/to/antd.css';
 
 import React from 'react';
 import { BrowserRouter as Router, Link, Routes, Route } from 'react-router-dom';
@@ -7,6 +8,9 @@ import HomePage from './components/HomePage';
 import FirstView from './components/FirstView';
 import SecondView from './components/SecondView';
 import ThirdView from './components/ThirdView';
+
+import { Layout } from 'antd';
+
 
 const App = () => {
   return (
