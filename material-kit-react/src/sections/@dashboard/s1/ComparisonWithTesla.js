@@ -3,7 +3,6 @@ import * as echarts from 'echarts';
 import axios from "axios";
 import { processData } from './dataProcessorClimate';
 
-
 const ComparisonWithTesla = () => {
   const chartRef1 = useRef(null);
   const [chartTesla, setChartTesla] = useState([]);
