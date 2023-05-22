@@ -1,4 +1,4 @@
-- name: cCeate flask directory 
+- name: Create flask directory 
   file:
     path: "{{ image_directory }}/backend"
     recurse: yes
