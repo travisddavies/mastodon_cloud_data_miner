@@ -63,7 +63,7 @@ instances:
     volumes: "data@instance-04"
 
 mount:
-  path: /home/{{ ansible_user }}/data 
+  path: /home/ubuntu/data
   src: /dev/vdb
 
 directory_path: "/home/{{ ansible_user }}/data"

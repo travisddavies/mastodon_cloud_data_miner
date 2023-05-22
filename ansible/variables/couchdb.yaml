@@ -2,6 +2,10 @@ bind_mount_path:
   src: /home/{{ ansible_user }}/data/couchdb/etc
   dst: /opt/couchdb/etc/local.d
 
+volume_path:
+  src: /home/{{ ansible_user }}/data/couchdb/data
+  dst: /opt/couchdb/data
+
 couchdb_port: 5984
 cluster_port: 4369
 cluster_comm_port_range_min: 9100
@@ -33,9 +37,6 @@ database:
   - sudo_population_2020
   - sudo_environment_2018
 
-twitter_design_docs:
-  - name: 
-
 design_docs:
   - name: view_state
     db_name: twitter
@@ -53,26 +54,27 @@ design_docs:
     db_name: twitter 
     filename: view_s3.js
     json: view_s3.json
-  # - name: view_emoji 
-  #   db_name: mastodon_data
-  #   filename: mastodon_view.js
-  #   json: mastodon_view.json
   - name: view_victoria_count
     db_name: twitter 
     filename: victoria_tweets_count.js
-  # - name: view_sudo_2020
-  #   db_name: sudo_population_2020
-  #   filename: sudo_2020_view.js
-  #   json: sudo_2020_view.json
-  # - name: view_sudo_2019
-  #   db_name: sudo_summary_2019
-  #   filename: sudo_2019_view.js
-  #   json: sudo_2019_view.json
-  # - name: view_sudo_median_2021
-  #   db_name: sudo_median_2021 
-  #   filename: sudo_2021_median_view.js
-  #   json: sudo_2021_median_view.json
-  # - name: view_sudo_environment_2018
-  #   db_name: sudo_environment_2018
-  #   filename: sudo_environment_view.js
-  #   json: sudo_environment_view.json
+    json: victoria_tweets_count.json
+  - name: view_emoji 
+    db_name: mastodon_data
+    filename: mastodon_view.js
+    json: mastodon_view.json
+  - name: view_sudo_2020
+    db_name: sudo_population_2020
+    filename: sudo_2020_view.js
+    json: sudo_2020_view.json
+  - name: view_sudo_2019
+    db_name: sudo_summary_2019
+    filename: sudo_2019_view.js
+    json: sudo_2019_view.json
+  - name: view_sudo_median_2021
+    db_name: sudo_median_2021 
+    filename: sudo_2021_median_view.js
+    json: sudo_2021_median_view.json
+  - name: view_sudo_environment_2018
+    db_name: sudo_environment_2018
+    filename: sudo_environment_view.js
+    json: sudo_environment_view.json
