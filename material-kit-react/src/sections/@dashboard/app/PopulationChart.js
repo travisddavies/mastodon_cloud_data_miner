@@ -14,7 +14,7 @@ PopulationChart.propTypes = {
 };
 
 export default function PopulationChart({ title, subheader, chartData, ...other }) {
-  const chartLabels = chartData.map((i) => i.label);
+  const chartLabels = chartData.map((i) => i.key);
 
   const chartSeries = chartData.map((i) => i.value);
 

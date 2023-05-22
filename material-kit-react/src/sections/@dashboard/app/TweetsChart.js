@@ -37,7 +37,7 @@ TweetsChart.propTypes = {
 export default function TweetsChart({ title, subheader, chartColors, chartData, ...other }) {
   const theme = useTheme();
 
-  const chartLabels = chartData.map((i) => i.label);
+  const chartLabels = chartData.map((i) => i.key);
 
   const chartSeries = chartData.map((i) => i.value);
 

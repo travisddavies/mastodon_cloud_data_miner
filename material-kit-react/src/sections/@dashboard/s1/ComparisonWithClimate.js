@@ -54,8 +54,8 @@ const ComparisonLineChartS1 = () => {
           data: stateNames,
           axisLabel: {
             interval: 0,
-            rotate: 15,
-            fontSize: 10
+            rotate: 0,
+            fontSize: 9
           }
         },
         yAxis: {
@@ -125,7 +125,8 @@ const ComparisonLineChartS1 = () => {
           data: stateNames,
           axisLabel: {
             interval: 0,
-            rotate: 45
+            rotate: 0,
+            fontSize: 9
           }
         },
         yAxis: {

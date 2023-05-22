@@ -5,6 +5,7 @@ import {Box, Card, CardHeader, Grid, Container, Stack, Typography, Divider } fro
 // sections
 import TweetClimateMap from "../sections/@dashboard/s1/TweetClimateMap";
 import ComparisonWithClimate from "../sections/@dashboard/s1/ComparisonWithClimate";
+import ComparisonWithTesla from "../sections/@dashboard/s1/ComparisonWithTesla";
 
 export default function S1() {
   return (
@@ -36,6 +37,15 @@ export default function S1() {
               <Divider sx={{ my: 2 }} />
               <Box sx={{ mx: 3 }}>
                 <ComparisonWithClimate />
+              </Box>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={6} md={12}>
+            <Card>
+              <CardHeader title="% Tesla vs % Climate mentioned in tweets" />
+              <Divider sx={{ my: 2 }} />
+              <Box sx={{ mx: 3 }}>
+                <ComparisonWithTesla />
               </Box>
             </Card>
           </Grid>
