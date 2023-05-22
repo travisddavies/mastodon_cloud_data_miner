@@ -5,21 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebe1b886-54c3-49eb-9d56-fdabbb15ca07" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/LGA_GDA2020.geojson" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/comparisonChartS1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/dataProcessorClimate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/mapS1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/App11.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ClimateNumber.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FirstView_S1bar&amp;line.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/FirstView_S2radar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Quiz.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/TweetNumber.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/quizIndex.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/australia_state.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/public/australia_state.geojson" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/state_tweet_count_demo.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/state_tweet_count_demo.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/FirstView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/FirstView.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ThirdView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ThirdView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SecondView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SecondView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/comparisonChartS1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/comparisonChartS1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/mapS1.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mapS1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flaskProject/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flaskProject/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flaskProject/templates/Index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../flaskProject/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../flaskProject/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +73,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Debbie&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/shenliangyue/Documents/Git/COMP90024_assignment2/demo-react&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/shenliangyue/Documents/Git/COMP90024_assignment2/demo-react/src/components&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -84,6 +86,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
     </key>
@@ -115,7 +120,10 @@
       <workItem from="1684415611114" duration="1709000" />
       <workItem from="1684417693490" duration="53000" />
       <workItem from="1684417761902" duration="521000" />
-      <workItem from="1684418317334" duration="33219000" />
+      <workItem from="1684418317334" duration="38255000" />
+      <workItem from="1684523190998" duration="243000" />
+      <workItem from="1684563146578" duration="23476000" />
+      <workItem from="1684743801791" duration="986000" />
     </task>
     <servers />
   </component>

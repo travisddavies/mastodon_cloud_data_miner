@@ -576,7 +576,7 @@
 //         const chart = echarts.init(mapContainer.current);
 //         chart.setOption({
 //           title: {
-//             text: 'Discussions on climate topics on twitter in each state of Australia',
+//             text: 'Climate related tweets in Australia',
 //             left: 'right'
 //           },
 //           tooltip: {
@@ -824,40 +824,385 @@
 //
 // export default MapS1;
 
+// comparisonchart with mapS1
+// import React, { useEffect, useState, useRef } from 'react';
+// import ComparisonChartS1 from "./comparisonChartS1";
+// import MapS1 from "./mapS1";
+// const ChartContainer = () => {
+//   const [chartType, setChartType] = useState('map');
+//
+//   const handleChartTypeChange = (type) => {
+//     setChartType(type);
+//   };
+//
+//   let chartComponent;
+//   switch (chartType) {
+//     case 'map':
+//       chartComponent = <MapS1 />;
+//       break;
+//     case 'line':
+//       chartComponent = <ComparisonChartS1 />;
+//       break;
+//     default:
+//       chartComponent = null;
+//   }
+//
+//   return (
+//     <div>
+//       <div>
+//         <button onClick={() => handleChartTypeChange('map')}>Map</button>
+//         <button onClick={() => handleChartTypeChange('line')}>Line Chart</button>
+//       </div>
+//       {chartComponent}
+//     </div>
+//   );
+// };
+//
+// export default ChartContainer;
+
+// import React, { useEffect, useState, useRef } from 'react';
+// import * as echarts from 'echarts';
+// import { processData } from './dataProcessorClimate';
+//
+// const ComparisonLineChartS1 = () => {
+//   const chartRef1 = useRef(null);
+//   const chartRef2 = useRef(null);
+//   const [data, setData] = useState([]);
+//
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const processedData = await processData();
+//       console.log(processedData)
+//       setData(processedData);
+//     };
+//
+//     fetchData();
+//   }, []);
+//
+//   useEffect(() => {
+//     if (data.length > 0) {
+//       const stateNames = data.map(item =>
+//         item.name
+//           .split(' ')
+//           .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+//           .join(' ')
+//       );
+//       const tweetPercentages = data.map(item => (item.details.percentage * 100).toFixed(2));
+//       // const protectedAreaPercentages = data.map(item => (item.details.green * 100).toFixed(2));
+//       // const solarPanelPercentages = data.map(item => item.details.solar.toFixed(2));
+//       console.log(stateNames)
+//       console.log(tweetPercentages)
+//
+//       const option1 = {
+//         title: {
+//           text: 'Tweet Percentage(%)'
+//         },
+//         tooltip: {
+//           trigger: 'axis'
+//         },
+//         legend: {
+//           data: ['Tweet Percentage(%)']
+//         },
+//         grid: {
+//           left: '3%',
+//           right: '4%',
+//           bottom: '3%',
+//           containLabel: true
+//         },
+//         toolbox: {
+//           feature: {
+//             saveAsImage: {},
+//             magicType:{show: true, type:['line','bar']}
+//           }
+//         },
+//         xAxis: {
+//           type: 'category',
+//           boundaryGap: false,
+//           data: stateNames,
+//           axisLabel: {
+//             interval: 0,
+//             rotate: 45
+//           }
+//         },
+//         yAxis: {
+//           type: 'value'
+//         },
+//         series: [
+//           {
+//             name: 'Tweet Percentage(%)',
+//             type: 'line',
+//             data: tweetPercentages,
+//             itemStyle: {
+//             color: '#92B0C5' // Set the color for the first chart
+//             }
+//           },
+//         ]
+//       };
+//
+//       const chartInstance = echarts.init(chartRef1.current);
+//       chartInstance.setOption(option1);
+//     }
+//   }, [data]);
+//
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       const processedData = await processData();
+//       console.log(processedData)
+//       setData(processedData);
+//     };
+//
+//     fetchData();
+//   }, []);
+//
+//   useEffect(() => {
+//     if (data.length > 0) {
+//       const stateNames = data.map(item =>
+//         item.name
+//           .split(' ')
+//           .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+//           .join(' ')
+//       );
+//       const tweetPercentages = data.map(item => (item.details.percentage * 100).toFixed(2));
+//       const protectedAreaPercentages = data.map(item => (item.details.green * 100).toFixed(2));
+//       const solarPanelPercentages = data.map(item => item.details.solar.toFixed(2));
+//
+//       const option2 = {
+//         title: {
+//           text: 'Protected Area Percentage(%)'
+//         },
+//         tooltip: {
+//           trigger: 'axis'
+//         },
+//         legend: {
+//           data: ['Protected Area Percentage(%)']
+//         },
+//         grid: {
+//           left: '3%',
+//           right: '4%',
+//           bottom: '3%',
+//           containLabel: true
+//         },
+//         toolbox: {
+//           feature: {
+//             saveAsImage: {},
+//             magicType:{show: true, type:['line','bar']}
+//           }
+//         },
+//         xAxis: {
+//           type: 'category',
+//           boundaryGap: false,
+//           data: stateNames,
+//           axisLabel: {
+//             interval: 0,
+//             rotate: 45
+//           }
+//         },
+//         yAxis: {
+//           type: 'value'
+//         },
+//         series: [
+//           {
+//             name: 'Protected Area Percentage(%)',
+//             type: 'line',
+//             data: protectedAreaPercentages,
+//             itemStyle: {
+//             color: '#E8D954' // Set the color for the first chart
+//             }
+//           },
+//         ]
+//       };
+//
+//       const chartInstance = echarts.init(chartRef2.current);
+//       chartInstance.setOption(option2);
+//     }
+//   }, [data]);
+//
+//
+//   return (
+//       <div style={{ display: 'display: flex; flex-direction: row;'}}>
+//         <div ref={chartRef1} style={{ height: '400px', width: '100%' }}></div>
+//         <div ref={chartRef2} style={{ height: '400px', width: '100%' }}></div>
+//
+//       </div>
+//   );
+// };
+//
+// export default ComparisonLineChartS1;
+
+//quiz
+// import React from 'react';
+// import ReactDOM from 'react-dom';
+// import './quizIndex.css';
+// import Quiz from './Quiz.js'
+//
+// function QuizList() {
+//   return (
+//     <React.StrictMode>
+//       <Quiz />
+//     </React.StrictMode>
+//   );
+// }
+//
+// ReactDOM.render(
+//   <QuizList />,
+//   document.getElementById('root')
+// );
+//
+// export default QuizList;
+
 import React, { useEffect, useState, useRef } from 'react';
-import ComparisonChartS1 from "./comparisonChartS1";
-import MapS1 from "./mapS1";
-const ChartContainer = () => {
-  const [chartType, setChartType] = useState('map');
+import * as echarts from 'echarts';
+import { processData } from './dataProcessorClimate';
+import axios from "axios";
 
-  const handleChartTypeChange = (type) => {
-    setChartType(type);
-  };
+const ComparisonWithTesla = () => {
+  const chartRef1 = useRef(null);
+  const [chartTesla, setChartTesla] = useState([]);
+  const [data, setData] = useState([]);
+  const [chartprocessedData, setProcessedData] = useState([])
 
-  let chartComponent;
-  switch (chartType) {
-    case 'map':
-      chartComponent = <MapS1 />;
-      break;
-    case 'line':
-      chartComponent = <ComparisonChartS1 />;
-      break;
-    default:
-      chartComponent = null;
-  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const processedData = await processData();
+      console.log(processedData)
+      setData(processedData);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+        const fetchData1 = async () => {
+            try {
+                const response1 = await axios.get('http://127.0.0.1:5000/topic_tesla_related_climate');
+                const responseTotal = await axios.get('http://127.0.0.1:5000/state_tweet_count');
+                console.log(response1.data);
+
+                const Tesla = response1.data.map((item) => ({
+                    name: item.key,
+                    value: item.value
+                }));
+
+                const totalData = responseTotal.data.map(item => ({
+                      name: item.key,
+                      value: item.value,
+                }));
+
+                const processedData1 = Tesla.map(item => {
+                const totalItem = totalData.find(data => data.name === item.name);
+                    return {
+                      name: item.name,
+                      value: totalItem ? item.value / totalItem.value : 0
+                    };
+                });
+
+                setProcessedData(processedData1);
+
+            } catch (error) {
+                console.log(error);
+            }
+        };
+            fetchData1();
+        }, []);
+
+  useEffect(() => {
+    const chart = echarts.init(chartRef1.current)
+    if (data.length > 0) {
+      const stateNames = data.map(item =>
+        item.name
+          .split(' ')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+          .join(' ')
+      );
+      const tweetPercentages = data.map(item => (item.details.percentage * 100).toFixed(2));
+      const teslaPercentage = chartprocessedData.map(item => (item.value * 100).toFixed(2));
+
+      const option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'shadow'
+          }
+        },
+        legend: {
+          data: ['Climate Tweet Percentage (%)', 'Tesla Tweet Percentage (%)']
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'value',
+            splitNumber: 10,
+            max: 0.7,
+          },
+          {
+            type: 'value',
+            splitNumber: 10,
+            max: 0.7,
+          }
+        ],
+        yAxis: [
+          {
+            type: 'category',
+            axisTick: {
+              show: false
+            },
+            data: stateNames
+          }
+        ],
+        series: [
+          {
+            name: 'Climate Tweet Percentage (%)',
+            type: 'bar',
+            xAxisIndex: 1,
+            label: {
+              show: true,
+              position: 'inside'
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: tweetPercentages
+          },
+          {
+            name: 'Tesla Tweet Percentage (%)',
+            type: 'bar',
+            stack: 'Total',
+            xAxisIndex: 0,
+            label: {
+              show: true,
+              position: 'inside'
+            },
+            emphasis: {
+              focus: 'series'
+            },
+            data: teslaPercentage
+          }
+        ]
+      }
+      chart.setOption(option);
+    }
+  }, [chartRef1,data,chartTesla]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const processedData = await processData();
+      setData(processedData);
+    };
+    fetchData();
+  }, []);
 
   return (
-    <div>
-      <div>
-        <button onClick={() => handleChartTypeChange('map')}>Map</button>
-        <button onClick={() => handleChartTypeChange('line')}>Line Chart</button>
+      <div style={{ display: 'display: flex; flex-direction: row;'}}>
+        <div ref={chartRef1} style={{ height: '400px', width: '100%' }}></div>
       </div>
-      {chartComponent}
-    </div>
   );
 };
 
-export default ChartContainer;
+export default ComparisonWithTesla;
 
 
 

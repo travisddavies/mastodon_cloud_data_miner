@@ -18,13 +18,14 @@ const ComparisonLineChartS1 = () => {
 
   useEffect(() => {
     if (data.length > 0) {
-      const stateNames = data.map(item =>
-        item.name
-          .split(' ')
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-          .join(' ')
-      );
-      const tweetPercentages = data.map(item => (item.details.percentage * 1000).toFixed(2));
+      // const stateNames = data.map(item =>
+      //   item.name
+      //     .split(' ')
+      //     .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      //     .join(' ')
+      // );
+      const stateNames = data.map(item => item.name);
+      const tweetPercentages = data.map(item => (item.details.percentage * 10000).toFixed(2));
       const protectedAreaPercentages = data.map(item => (item.details.green * 100).toFixed(2));
       const solarPanelPercentages = data.map(item => item.details.solar.toFixed(2));
       console.log(stateNames)

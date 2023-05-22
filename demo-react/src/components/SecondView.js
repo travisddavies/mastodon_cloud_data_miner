@@ -91,7 +91,7 @@ const SecondView = () => {
                 },
                 tooltip: {
                     trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                    formatter: '{a} <br/>{b}: {c}'
                 },
                 legend: {
                     top: '5%',
@@ -142,7 +142,7 @@ const SecondView = () => {
                 },
                 tooltip: {
                     trigger: 'item',
-                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                    formatter: '{a} <br/>{b}: {c}'
                 },
                 legend: {
                     top: '5%',
