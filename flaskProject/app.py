@@ -1,5 +1,5 @@
-from flask import Flask, jsonify, request, send_file
-from flask_restful import Api, Resource
+from flask import Flask
+from flask_restful import Api
 from flask_cors import CORS
 from views import *
 
@@ -28,6 +28,11 @@ def state_tweet_count():
     view = get_state_tweet_count()
     return view, 200
 
+@app.route('/tweet_number', methods=['GET'])
+def tweet_number():
+    view = get_state_tweet_number()
+    return view, 200
+
 @app.route('/victoria_tweet_count', methods=['GET'])
 def victoria_tweet_count():
     view = get_victoria_tweet_count()
@@ -38,6 +43,11 @@ def topic_climate():
     view = get_climate()
     return view, 200
 
+@app.route('/topic_climate_number', methods=['GET'])
+def topic_climate_number():
+    view = get_climate_number()
+    return view, 200
+
 @app.route('/topic_tesla_related_climate', methods=['GET'])
 def topic_tesla_related_climate():
     view = get_climate_tesla()
@@ -46,6 +56,11 @@ def topic_tesla_related_climate():
 @app.route('/topic_coffee', methods=['GET'])
 def topic_coffee():
     view = get_coffee()
+    return view, 200
+
+@app.route('/topic_coffee_number', methods=['GET'])
+def topic_coffee_number():
+    view = get_coffee_number()
     return view, 200
 
 @app.route('/emoji_no_sentiment', methods=['GET'])
@@ -60,6 +75,11 @@ def emoji_total():
 @app.route('/emoji_with_sentiment', methods=['GET'])
 def emoji_with_sentiment():
     view = get_emoji_yes_sentiment()
+    return view, 200
+
+@app.route('/emoji_usage', methods=['GET'])
+def emoji_usage():
+    view = get_emoji_usage()
     return view, 200
 
 @app.route('/emoji_mastodon', methods=['GET'])

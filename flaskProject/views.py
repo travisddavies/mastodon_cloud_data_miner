@@ -26,6 +26,12 @@ def get_state_tweet_count():
     data = response.json()["rows"]
     return data
 
+def get_state_tweet_number():
+    url = API + database_twitter + "/view_state/_view/state_tweets"
+    response = requests.get(url)
+    data = response.json()["rows"]
+    return data
+
 def get_victoria_tweet_count():
     url = API + database_twitter + "/view_victoria_count/_view/city_filter" + query
     response = requests.get(url)
@@ -39,6 +45,12 @@ def get_climate():
     data = response.json()["rows"]
     return data
 
+def get_climate_number():
+    url = API + database_twitter + "/view_climate/_view/climate_filter"
+    response = requests.get(url)
+    data = response.json()["rows"]
+    return data
+
 def get_climate_tesla():
     url = API + database_twitter + "/view_climate/_view/tesla_filter" + query
     response = requests.get(url)
@@ -48,6 +60,12 @@ def get_climate_tesla():
 # coffee
 def get_coffee():
     url = API + database_twitter + "/view_coffee/_view/coffee_filter" + query
+    response = requests.get(url)
+    data = response.json()["rows"]
+    return data
+
+def get_coffee_number():
+    url = API + database_twitter + "/view_coffee/_view/coffee_filter"
     response = requests.get(url)
     data = response.json()["rows"]
     return data
@@ -67,6 +85,12 @@ def get_emoji_total():
 
 def get_emoji_yes_sentiment():
     url = API + database_twitter + "/view_emoji/_view/yes_sentiment" + query
+    response = requests.get(url)
+    data = response.json()["rows"]
+    return data
+
+def get_emoji_usage():
+    url = API + database_twitter + "/view_emoji/_view/total"
     response = requests.get(url)
     data = response.json()["rows"]
     return data
