@@ -111,6 +111,7 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                         data = {
                             # id
                             "_id": single_tweet["id"],
+                            # tags
                             "tags": single_tweet["value"]["tags"]
                             if "value" in single_tweet
                             and "tags" in single_tweet["value"]
