@@ -7,6 +7,4 @@
     - name: Build Docker image
       docker_image:
         name: scale-mastodon-client
-        path: dockerfile
-        buildargs:
-          - PYTHON_SCRIPT_PATH= scale-mastodon.py
+        path: "{{dockerfile}}""
