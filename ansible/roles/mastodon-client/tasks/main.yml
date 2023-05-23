@@ -7,9 +7,9 @@
     - name: Build Docker image
       docker_image:
         name: mastodon-client
-        path: ../../couchdb/dockerfile
+        path: dockerfile
         buildargs:
-          - PYTHON_SCRIPT_PATH=../../couchdb/mastodon-couchdb.py
+          - PYTHON_SCRIPT_PATH=mastodon-couchdb.py
 
     - name: Run Docker container
       docker_container:

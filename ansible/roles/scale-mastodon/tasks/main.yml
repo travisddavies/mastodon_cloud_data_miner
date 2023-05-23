@@ -1,0 +1,11 @@
+---
+- name: Deploy Docker service
+  hosts: swarm_manager
+  gather_facts: false
+  tasks:
+    - name: Create Docker service
+      docker_service:
+        state: present
+        name: scale-mastodon-service
+        image: scale-mastodon-client
+        replicas: 3

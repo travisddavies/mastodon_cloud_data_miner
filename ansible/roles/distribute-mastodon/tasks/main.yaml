@@ -1,0 +1,12 @@
+---
+- name: Build Docker image and run image in container
+  hosts: swarm_instances
+  gather_facts: false
+
+  tasks:
+    - name: Build Docker image
+      docker_image:
+        name: scale-mastodon-client
+        path: dockerfile
+        buildargs:
+          - PYTHON_SCRIPT_PATH= scale-mastodon.py

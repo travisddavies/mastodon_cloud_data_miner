@@ -24,3 +24,4 @@ sudo docker build -t image-name .
 sudo docker run -d image-name
 
 # check ansible script of mastodon-client
+docker service create --replicas 3 --name myservice myimage:latest
