@@ -4,7 +4,6 @@ COPY material-kit-react /home/material-kit-react
 WORKDIR /home/material-kit-react
 RUN npm install
 
-EXPOSE 3000
-EXPOSE 5000
+EXPOSE 3000 80
 
 CMD ["npm", "start"]

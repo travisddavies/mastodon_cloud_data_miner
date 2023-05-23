@@ -9,10 +9,10 @@
     src: ./images/frontend/Dockerfile
     dest: "{{ image_directory }}/frontend/Dockerfile"
 
-# - name: Copy material-kit-react
-#   copy:
-#     src: material-kit-react
-#     dest: "{{ image_directory }}/frontend/"
+- name: Copy material-kit-react
+  copy:
+    src: material-kit-react
+    dest: "{{ image_directory }}/frontend/"
 
 - name: Build react image
   docker_image: 
