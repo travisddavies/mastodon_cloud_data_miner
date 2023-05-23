@@ -3,9 +3,9 @@ import axios from 'axios';
 const toTitleCase = str => str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
 export const processData = async () => {
   try {
-    const responseClimate = await axios.get('http://127.0.0.1:5000/topic_climate');
-    const responseTotal = await axios.get('http://127.0.0.1:5000/state_tweet_count');
-    const responseEnv = await axios.get('http://127.0.0.1:5000/environment_sudo');
+    const responseClimate = await axios.get('http://0.0.0.0:5000/topic_climate');
+    const responseTotal = await axios.get('http://0.0.0.0:5000/state_tweet_count');
+    const responseEnv = await axios.get('http://0.0.0.0:5000/environment_sudo');
 
     const totalData = responseTotal.data.map(item => ({
       name: item.key,
