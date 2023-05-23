@@ -27,8 +27,7 @@
 - name: Run a react container
   docker_container:
     image: frontend:latest 
-    name: flask
+    name: react
     state: started 
     ports: 
       - 3000:3000
-      - 5000:5000
