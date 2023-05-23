@@ -9,10 +9,10 @@
     src: ./images/frontend/Dockerfile
     dest: "{{ image_directory }}/frontend/Dockerfile"
 
-- name: Copy material-kit-react
-  copy:
-    src: material-kit-react
-    dest: "{{ image_directory }}/frontend/"
+# - name: Copy material-kit-react
+#   copy:
+#     src: material-kit-react
+#     dest: "{{ image_directory }}/frontend/"
 
 - name: Build react image
   docker_image: 
@@ -27,8 +27,7 @@
 - name: Run a react container
   docker_container:
     image: frontend:latest 
-    name: flask
+    name: react
     state: started 
     ports: 
       - 3000:3000
-      - 5000:5000
