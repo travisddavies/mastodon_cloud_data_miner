@@ -11,8 +11,7 @@ print("Reading file")
 # path of the Twitter file
 twitter_file_path = "twitterhuge.json"
 
-couchdb_server = "http://admin:password@172.26.132.152:8080"
-couch = couchdb.Server(couchdb_server)
+couch = couchdb.Server("http://admin:password@172.26.132.152:8080")
 db_name = "twitter"
 if db_name in couch:
     db = couch[db_name]
