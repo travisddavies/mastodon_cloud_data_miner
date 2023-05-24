@@ -15,7 +15,7 @@ const EmojiTweetVsMastodon = () => {
     useEffect(() => {
         const fetchData1 = async () => {
             try {
-                const response1 = await axios.get('http://127.0.0.1:5000/emoji_total');
+                const response1 = await axios.get('http://localhost:5000/emoji_total');
                 // console.log(response1.data);
 
                 const Emoji1 = response1.data.map((item) => ({
@@ -41,7 +41,7 @@ const EmojiTweetVsMastodon = () => {
     useEffect(() => {
         const fetchData2 = async () => {
             try {
-                const response2 = await axios.get('http://127.0.0.1:5000/emoji_mastodon');
+                const response2 = await axios.get('http://localhost:5000/emoji_mastodon');
 
                 const Emoji2 = response2.data.map((item) => ({
                     name: item.key,

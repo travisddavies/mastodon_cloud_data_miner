@@ -19,7 +19,7 @@ export default function DashboardAppPage() {
   const [populationData, setPopulationData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:5000/tweet_number')
+    axios.get('http://localhost:5000/tweet_number')
       .then(response => {
         const tweetCountValue = response.data[0].value;
         setTweetCount(tweetCountValue);
@@ -28,7 +28,7 @@ export default function DashboardAppPage() {
         console.error('Error fetching tweet count:', error);
       });
 
-    axios.get('http://127.0.0.1:5000/topic_climate_number')
+    axios.get('http://localhost:5000/topic_climate_number')
       .then(response => {
         const climateTweetCountValue = response.data[0].value;
         setClimateTweetCount(climateTweetCountValue);
@@ -37,7 +37,7 @@ export default function DashboardAppPage() {
         console.error('Error fetching climate tweet count:', error);
       });
 
-    axios.get('http://127.0.0.1:5000/emoji_usage')
+    axios.get('http://localhost:5000/emoji_usage')
       .then(response => {
         const emojiUsageValue = response.data[0].value;
         setEmojiUsage(emojiUsageValue);
@@ -46,7 +46,7 @@ export default function DashboardAppPage() {
         console.error('Error fetching emoji usage:', error);
       });
 
-    axios.get('http://127.0.0.1:5000/topic_coffee_number')
+    axios.get('http://localhost:5000/topic_coffee_number')
       .then(response => {
         const coffeeTweetCountValue = response.data[0].value;
         setCoffeeTweetCount(coffeeTweetCountValue);
@@ -57,7 +57,7 @@ export default function DashboardAppPage() {
   }, []);
 
   useEffect(() => {
-      axios.get('http://127.0.0.1:5000/state_tweet_count')
+      axios.get('http://localhost:5000/state_tweet_count')
         .then(response => {
           const tweetData = response.data;
 

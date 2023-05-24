@@ -24,7 +24,7 @@ const StateEmojiMap = () => {
 useEffect(() => {
   const fetchData = async () => {
       try {
-        const responseEmoji = await axios.get('http://127.0.0.1:5000/emoji_no_sentiment');
+        const responseEmoji = await axios.get('http://localhost:5000/emoji_no_sentiment');
 
         const stateEmojiData = responseEmoji.data.reduce((acc, item) => {
           const state = item.key[0];

@@ -15,7 +15,7 @@ const EmojiSentiment = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/emoji_with_sentiment');
+        const response = await axios.get('http://localhost:5000/emoji_with_sentiment');
 
         const veryNegative = response.data.reduce((obj, item) => {
           if (item.key[2] === "very negative") {
