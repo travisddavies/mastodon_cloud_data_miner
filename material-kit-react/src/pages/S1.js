@@ -42,7 +42,7 @@ export default function S1() {
           </Grid>
           <Grid item xs={12} sm={6} md={12}>
             <Card>
-              <CardHeader title="% Tesla vs % Climate mentioned in tweets" />
+              <CardHeader title="% Tesla or EVs vs % Climate Related Tweets" />
               <Divider sx={{ my: 2 }} />
               <Box sx={{ mx: 3 }}>
                 <ComparisonWithTesla />

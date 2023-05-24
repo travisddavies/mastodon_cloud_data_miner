@@ -71,7 +71,7 @@ const ComparisonWithTesla = () => {
           }
         },
         legend: {
-          data: ['Climate Tweet Percentage (%)', 'Tesla Tweet Percentage (%)']
+          data: ['Climate Related Tweets Percentage (%)', 'Tesla & EVs Related Tweets Percentage (%)']
         },
         grid: {
           left: '3%',
@@ -102,7 +102,7 @@ const ComparisonWithTesla = () => {
         ],
         series: [
           {
-            name: 'Climate Tweet Percentage (%)',
+            name: 'Climate Related Tweets Percentage (%)',
             type: 'bar',
             xAxisIndex: 1,
             label: {
@@ -115,7 +115,7 @@ const ComparisonWithTesla = () => {
             data: tweetPercentages
           },
           {
-            name: 'Tesla Tweet Percentage (%)',
+            name: 'Tesla & EVs Related Tweets Percentage (%)',
             type: 'bar',
             stack: 'Total',
             xAxisIndex: 0,
