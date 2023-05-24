@@ -11,17 +11,13 @@ print("Reading file")
 # path of the Twitter file
 twitter_file_path = "twitterhuge.json"
 
-# Connect to CouchDB
 couchdb_server = "http://admin:password@172.26.132.152:8080"
 couch = couchdb.Server(couchdb_server)
-
-# Access CouchDB database
 db_name = "twitter"
-
 if db_name in couch:
     db = couch[db_name]
 
-# map location details
+# Map location details
 with open("au.json") as f:
     au_loc = json.load(f)
 
@@ -139,7 +135,7 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                                 "domain"
                             ]
                             else None,
-                            # desc
+                            # description
                             "description": single_tweet["doc"]["data"][
                                 "context_annotations"
                             ][0]["domain"]["description"]
