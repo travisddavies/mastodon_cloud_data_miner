@@ -39,12 +39,13 @@ def get_word_list(ip_address, words):
         word_list = []
     return word_list
 
-# chatgpt
+# get timestamps
 def datetime_to_str(obj):
     if isinstance(obj, datetime.datetime):
         return obj.isoformat()
     raise TypeError(f"Object of type {type(obj).__name__} is not JSON serializable")
 
+# mastodon listener
 class Listener(StreamListener):
     def __init__(self, _word):
         self.word = _word
@@ -97,6 +98,7 @@ def main():
     else:
         db = couch.create(db_name)
 
+    # mastodon server
     m = Mastodon(
     api_base_url=f"https://mastodon.au",
     access_token="dLZTjc6NZc69o_EZhzRKc1Vqf0P5aj32gWQtYaYpZ3Y",

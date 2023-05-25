@@ -18,17 +18,19 @@ else:
     db = couch.create(db_name)
 
 
-# chatgpt
+# get timestamps
 def datetime_to_str(obj):
     if isinstance(obj, datetime.datetime):
         return obj.isoformat()
     raise TypeError(f"{type(obj).__name__} is not JSON serializable")
 
+# mastodon server
 m = Mastodon(
     api_base_url=f"https://mastodon.au",
     access_token="dLZTjc6NZc69o_EZhzRKc1Vqf0P5aj32gWQtYaYpZ3Y",
 )
 
+# mastodon listener
 class Listener(StreamListener):
     def on_update(self, status):
         content = status.get('content', '')       

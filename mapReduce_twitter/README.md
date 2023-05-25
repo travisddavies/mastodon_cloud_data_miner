@@ -6,7 +6,7 @@ Thus, to see the details of MapReduce functions of our scenarios, please look at
 - view_s2.js for emoji scenario
 - view_s3.js for coffee scenario
 
-The design documents (JSON file) will be produced by running the above java script by for example \'93node view_s1.js\'94. The corresponding design document will be produced:
+The design documents (JSON file) will be produced by running the above java script by for example 'node view_s1.js'. The corresponding design document will be produced:
 - view_s1.json for climate scenario
 - view_emoji.json for emoji scenario
 - view_s3.json for coffee scenario
