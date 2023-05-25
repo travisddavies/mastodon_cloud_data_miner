@@ -13,7 +13,6 @@
     - role: common
     - role: public_keys
     - role: docker
-    - role: working_directory 
     - role: permission
 
 - name: Set up couchdb 
