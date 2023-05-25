@@ -31,13 +31,13 @@
   roles:
     - cluster
 
-- name: Set up load balancer
+- name: Set up app
   become: yes
   hosts: app 
   vars_files:
-    - variables/nginx.yaml
+    - variables/mrc.yaml
   roles:
-    - nginx
+    - app
 
 - name: Set up databases
   hosts: config
