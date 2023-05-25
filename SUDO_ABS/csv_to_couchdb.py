@@ -7,7 +7,7 @@ import os
 couch = couchdb.Server('http://admin:password@localhost:5984/')
 
 # create DB for ABS Data and Save it
-abs_folder = os.listdir('/home/ubuntu/data/ABS Data by Region/csv/')
+abs_folder = os.listdir('/ABS Data by Region/csv/')
 dbname = 'abs'
 if dbname in couch:
     db = couch[dbname]
@@ -17,7 +17,7 @@ if dbname in couch:
 abs_data = []
 for filename in abs_folder:
     location = filename.split('.')[0].lower()
-    path = '/home/ubuntu/data/ABS Data by Region/csv/' + filename
+    path = '/ABS Data by Region/csv/' + filename
     with open(path, newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -41,7 +41,7 @@ if dbname_1 in couch:
 #     db = couch.create(dbname_1)
 
 sudo_data_2019 = []
-with open('/home/ubuntu/data/SUDO/abs_regional_population_summary_lga_2019-9179848315534025398.csv', newline='') as csvfile:
+with open('/SUDO/abs_regional_population_summary_lga_2019-9179848315534025398.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             # print(row)
@@ -64,7 +64,7 @@ if dbname_2 in couch:
 #     db = couch.create(dbname_2)
 
 sudo_data_2020 = []
-with open('/home/ubuntu/data/SUDO/abs_regional_population_age_sex_lga_2020-5503376266325126961.csv', newline='') as csvfile:
+with open('/SUDO/abs_regional_population_age_sex_lga_2020-5503376266325126961.csv', newline='') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             # print(row)
@@ -84,11 +84,11 @@ if dbname_3 in couch:
 # else:
 #     db = couch.create(dbname_3)
 
-with open('/home/ubuntu/data/SUDO/georef-australia-local-government-area.json') as lga_file:
+with open('/SUDO/georef-australia-local-government-area.json') as lga_file:
     lga = json.load(lga_file)
 
 sudo_median_2021 = []
-with open('/home/ubuntu/data/SUDO/abs_2021census_g02_aust_lga-52281858879944452.csv', newline='') as csvfile:
+with open('/SUDO/abs_2021census_g02_aust_lga-52281858879944452.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         new_row = {key.replace(' ', ''): value for key, value in row.items()}
@@ -136,7 +136,7 @@ if dbname_4 in couch:
 #     db = couch.create(dbname_4)
 
 sudo_environment_2018 = []
-with open('/home/ubuntu/data/SUDO/abs_data_by_region_land_and_environment_lga_2014_2018-1579945311216356256.csv', newline='') as csvfile:
+with open('/SUDO/abs_data_by_region_land_and_environment_lga_2014_2018-1579945311216356256.csv', newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         new_row = {key.replace(' ', ''): value for key, value in row.items()}

@@ -6,9 +6,7 @@ const mapFx = function (doc) {
         new_lga_name = doc.lga_name.replace(/ *\([^)]*\) */g, "").toLowerCase().trim()
         new_state_name = doc.state_name.replace(/ *\([^)]*\) */g, "").toLowerCase().trim()
         emit([new_lga_name, doc.lga_code_2021, new_state_name], [doc.median_age_persons,doc.median_tot_prsnl_inc_weekly])
-    }
-
-    
+    }   
 }
 
 const views = {
