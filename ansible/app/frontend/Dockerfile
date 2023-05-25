@@ -5,6 +5,6 @@ WORKDIR /home/material-kit-react
 RUN npm install
 VOLUME "/home/ubuntu/data/react/data"
 
-EXPOSE 3000 80
+EXPOSE 3000
 
 CMD ["npm", "start"]
