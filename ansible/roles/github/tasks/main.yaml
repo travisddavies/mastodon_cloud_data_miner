@@ -1,0 +1,7 @@
+---
+- name: Clone repository over SSH
+  git:
+    repo: ssh://git@github.com:travisddavies/COMP90024_assignment2.git
+    dest: /home/ubuntu/COMP90024_assignment2
+    version: master
+    ssh_opts: "-i /home/ubuntu/.ssh/id_rsa"

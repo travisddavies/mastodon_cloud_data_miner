@@ -1,0 +1,1 @@
+{"views":{"city_filter":{"map":"function (doc) {\n\n  state = doc.place_name['state']\n  city_town = doc.place_name['city']\n\n  if (state == 'victoria' && city_town != null) {\n    {\n      emit(city_town, 1)\n    }\n  }\n\n}","reduce":"_sum"}}}
