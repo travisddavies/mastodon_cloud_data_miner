@@ -1,9 +1,0 @@
----
-- name: Set up docker swarm
-  become: yes
-  hosts: 
-    - app
-    - sender
-  gather_facts: yes 
-  roles: 
-    - swarm
