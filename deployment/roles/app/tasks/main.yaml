@@ -1,6 +1,6 @@
 - name: Copy app directory
   synchronize: 
-    src: ../app
+    src: app
     dest: "{{ directory_path }}"
     delete: yes
 

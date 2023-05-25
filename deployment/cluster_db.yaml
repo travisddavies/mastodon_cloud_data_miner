@@ -1,0 +1,15 @@
+---
+- name: mount volume
+  become: yes 
+  hosts: config
+  vars_files: 
+    - variables/mrc.yaml
+  roles:
+
+- name: Set up cluster
+  become: yes
+  hosts: config
+  vars_files:
+    - variables/couchdb.yaml
+  roles:
+    - cluster

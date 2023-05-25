@@ -1,7 +1,7 @@
 ---
 - name: Copy mastodon files
   copy:
-    src: ../mastodon
+    src: mastodon
     dest: "{{ mastodon_path }}"
 
 - name: Build Scaled Mastodon client Docker image

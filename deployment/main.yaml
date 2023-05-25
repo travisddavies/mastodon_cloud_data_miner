@@ -10,7 +10,7 @@
     - role: public_keys
     - role: chrony
     - role: volume
-    - role: common
+    - role: openstack-common
     - role: public_keys
     - role: docker
     - role: permission
