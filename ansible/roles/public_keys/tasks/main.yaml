@@ -1,7 +1,0 @@
----
-- name: Add private key to instances
-  lineinfile:
-    dest: ~/.ssh/authorized_keys
-    regex: "{{ item.regex }}"
-    line:  "{{ item.key }}"
-  loop: "{{ public_keys }}"
