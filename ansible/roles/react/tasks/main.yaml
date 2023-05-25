@@ -4,30 +4,36 @@
     recurse: yes
     state: directory
 
-- name: Copy react dockerfile
-  copy: 
-    src: ./images/frontend/Dockerfile
-    dest: "{{ image_directory }}/frontend/Dockerfile"
+- name: Create react directory 
+  file:
+    path: "{{ image_directory }}/backend"
+    recurse: yes
+    state: directory
 
-- name: Copy material-kit-react
-  copy:
-    src: material-kit-react
-    dest: "{{ image_directory }}/frontend/"
+# - name: Copy react dockerfile
+#   copy: 
+#     src: ./images/frontend/Dockerfile
+#     dest: "{{ image_directory }}/frontend/Dockerfile"
 
-- name: Build react image
-  docker_image: 
-    name: frontend
-    tag: latest 
-    source: build 
-    build:
-      path: "{{ image_directory }}/frontend"
-      pull: false 
-    state: present
+# - name: Copy material-kit-react
+#   copy:
+#     src: material-kit-react
+#     dest: "{{ image_directory }}/frontend/"
 
-- name: Run a react container
-  docker_container:
-    image: frontend:latest 
-    name: react
-    state: started 
-    ports: 
-      - 3000:3000
+# - name: Build react image
+#   docker_image: 
+#     name: frontend
+#     tag: latest 
+#     source: build 
+#     build:
+#       path: "{{ image_directory }}/frontend"
+#       pull: false 
+#     state: present
+
+# - name: Run a react container
+#   docker_container:
+#     image: frontend:latest 
+#     name: react
+#     state: started 
+#     ports: 
+#       - 3000:3000

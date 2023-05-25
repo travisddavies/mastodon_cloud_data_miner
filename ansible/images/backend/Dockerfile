@@ -1,6 +1,5 @@
-FROM python:3.9-slim-buster
+FROM python:latest
 
-RUN apt-get update
 RUN pip install flask flask-restful Flask-Cors requests pandas CouchDB
 
 COPY flaskProject /home/flaskProject
