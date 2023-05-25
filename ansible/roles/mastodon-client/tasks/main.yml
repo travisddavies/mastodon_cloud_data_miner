@@ -1,18 +1,16 @@
 ---
-- name: Build Docker image and run image in container
-  hosts: localhost
-  gather_facts: false
+- name: Build single Mastodon client Docker image
+  docker_image:
+    name: mastodon-client
+    tag: latest 
+    source: build 
+    build:
+      path: "{{ mastodon_single_path }}"
+      pull: false 
+    state: present
 
-  tasks:
-    - name: Build Docker image
-      docker_image:
-        name: mastodon-client
-        path: dockerfile
-        buildargs:
-          - PYTHON_SCRIPT_PATH=mastodon-couchdb.py
-
-    - name: Run Docker container
-      docker_container:
-        name: mastodon-container
-        image: mastodon-client
-        state: started
+- name: Run Docker container
+  docker_container:
+    name: mastodon
+    image: mastodon-client
+    state: started

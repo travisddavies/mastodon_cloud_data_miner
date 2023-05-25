@@ -1,11 +1,23 @@
 ---
-- name: Deploy Docker service
-  hosts: swarm_manager
-  gather_facts: false
-  tasks:
-    - name: Create Docker service
-      docker_service:
-        state: present
-        name: scale-mastodon-service
-        image: scale-mastodon-client
-        replicas: 3
+- name: Copy mastodon files
+  copy:
+    src: mastodon
+    dest: "{{ mastodon_path }}"
+
+- name: Build Scaled Mastodon client Docker image
+  docker_image:
+    name: scale-mastodon-client
+    tag: latest 
+    source: build 
+    build:
+      path: "{{ mastodon_scale_path }}"
+      pull: false 
+    state: present
+
+- name: Create Docker service
+  docker_swarm_service:
+    state: present
+    name: scale-mastodon-service
+    image: scale-mastodon-client
+    replicas: 3
+  when: inventory_hostname in groups['config']
