@@ -3,17 +3,17 @@ from flask_restful import Api
 from flask_cors import CORS
 from views import *
 
-
 import couchdb
 
+f = open('config.json')
+localhost = json.load(f)['IP']
 # authentication
 admin = 'admin'
 password = 'password'
 # instance 4
-url = f'http://{admin}:{password}@localhost:8081/'
+url = f'http://{admin}:{password}@{localhost}/couchdb'
 # get couchdb instance
 couch = couchdb.Server(url)
-
 
 app = Flask(__name__)
 api = Api(app)
@@ -108,6 +108,6 @@ def environment_sudo():
     return view, 200
 
 if __name__ == '__main__':
-    app.run(debug=True, host='127.0.0.1', port='5000')
+    app.run(debug=True, host='0.0.0.0', port='5000')
 
 

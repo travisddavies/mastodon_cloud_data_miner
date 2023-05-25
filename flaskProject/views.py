@@ -3,7 +3,7 @@ import json
 
 f = open('config.json')
 localhost = json.load(f)['IP']
-API = f"http://admin:password@{localhost}:8081"
+API = f"http://admin:password@{localhost}/couchdb"
 
 # Twitter
 database_twitter = "/twitter/_design"
