@@ -14,9 +14,9 @@ const VictoriaCoffeeWithAge = () => {
   useEffect(() => {
     const fetchData1 = async () => {
       try {
-        const response1 = await axios.get('http://127.0.0.1:5000/topic_coffee');
-        const response2 = await axios.get('http://127.0.0.1:5000/victoria_tweet_count');
-        const response3 = await axios.get('http://127.0.0.1:5000/local_median_age_and_weekly_income_sudo');
+        const response1 = await axios.get('http://172.26.135.191/api/topic_coffee');
+        const response2 = await axios.get('http://172.26.135.191/api/victoria_tweet_count');
+        const response3 = await axios.get('http://172.26.135.191/api/local_median_age_and_weekly_income_sudo');
 
         const coffeeTweets = response1.data.reduce((obj, item) => {
           obj[item.key] = item.value;

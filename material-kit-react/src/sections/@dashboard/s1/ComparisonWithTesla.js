@@ -20,8 +20,8 @@ const ComparisonWithTesla = () => {
   useEffect(() => {
         const fetchData1 = async () => {
             try {
-                const response1 = await axios.get('http://127.0.0.1:5000/topic_tesla_related_climate');
-                const responseTotal = await axios.get('http://127.0.0.1:5000/state_tweet_count');
+                const response1 = await axios.get('http://172.26.135.191/api/topic_tesla_related_climate');
+                const responseTotal = await axios.get('http://172.26.135.191/api/state_tweet_count');
 
                 const Tesla = response1.data.map((item) => ({
                     name: item.key,

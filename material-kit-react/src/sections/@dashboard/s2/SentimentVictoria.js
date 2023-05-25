@@ -23,7 +23,7 @@ const SentimentVictoria = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:5000/emoji_with_sentiment');
+        const response = await axios.get('http://172.26.135.191/api/emoji_with_sentiment');
 
         const vicVeryNegative = response.data.filter(item => item.key[0] === "victoria" && item.key[2] === "very negative").map(item => ({ name: item.key[1], value: item.value }));
 

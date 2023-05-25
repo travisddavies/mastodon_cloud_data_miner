@@ -15,7 +15,7 @@ const SentimentRadar = () => {
   useEffect(() => {
     const fetchData1 = async () => {
       try {
-        const response1 = await axios.get('http://127.0.0.1:5000/emoji_with_sentiment');
+        const response1 = await axios.get('http://172.26.135.191/api/emoji_with_sentiment');
 
         const veryNegative = response1.data.reduce((obj, item) => {
           if (item.key[2] === "very negative") {

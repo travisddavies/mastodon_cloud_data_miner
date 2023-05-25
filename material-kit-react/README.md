@@ -26,13 +26,13 @@ It can fetch related data from backend, and then display the related diagrams.
 ```
 Frontend
 ├── public
-│   ├── assets (icons and pictures )
+│   ├── assets                          <- icons and pictures
 │   ├── favicon
-│   ├── australia_state.geojson (the data for map)
-│   ├── state_population.json (the data for population )
+│   ├── australia_state.geojson         <- the data for map
+│   ├── state_population.json           <- the data for population
 │   ├── index.html
 │   └── manifest.json 
-├── src (main code files)
+├── src                                 <- main code files
 │   ├── _mock
 │   ├── components
 │   ├── hooks
@@ -45,11 +45,11 @@ Frontend
 │   │   └── S3.js
 │   ├── sections
 │   │   └── @dashboard
-│   │       ├── app (files for page dashboard)
-│   │       ├── quiz (files for quiz part)
-│   │       ├── s1 (diagrams for scenario 1)
-│   │       ├── s2 (diagrams for scenario 2)
-│   │       └── s3 (diagrams for scenario 3)
+│   │       ├── app                    <- files for page dashboard
+│   │       ├── quiz                   <- files for quiz part
+│   │       ├── s1                     <- diagrams for scenario 1
+│   │       ├── s2                     <- diagrams for scenario 2
+│   │       └── s3                     <- diagrams for scenario 3
 │   ├── theme
 │   ├── utils
 │   ├── App.js
