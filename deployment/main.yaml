@@ -11,7 +11,6 @@
     - role: chrony
     - role: volume
     - role: openstack-common
-    - role: public_keys
     - role: docker
     - role: permission
 
@@ -56,3 +55,10 @@
     - swarm
     - scale-mastodon
     - mastodon-client
+
+- name: set up one mastodon client
+  hosts: config
+  become: yes 
+  roles: 
+    - mastodon-client
+
