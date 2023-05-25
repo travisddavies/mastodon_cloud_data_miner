@@ -1,5 +1,5 @@
 downsizing_couch.py:
-- the code is from a team member\'92s Assignment 1. 
+- the code is from a team member Travis Davies's Assignment 1. 
 
 au.json:
 - the extra json file used for city and state matching is from https://simplemaps.com/data/world-cities 
