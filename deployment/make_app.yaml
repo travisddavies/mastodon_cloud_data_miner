@@ -1,9 +1,0 @@
---- 
-- name: Set up modules for all instances
-  hosts: app
-  become: yes
-  vars_files:
-    - variables/app.yaml
-    - variables/mrc.yaml
-  roles:
-    - app
