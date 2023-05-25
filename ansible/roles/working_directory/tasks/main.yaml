@@ -1,6 +1,0 @@
---- 
-- name: copy working directory
-  synchronize:
-    src: data 
-    dest: "{{ directory_path }}"
-    delete: yes
