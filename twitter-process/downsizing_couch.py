@@ -89,7 +89,6 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                     "doc" in single_tweet
                     and "includes" in single_tweet["doc"]
                     and "places" in single_tweet["doc"]["includes"]
-                    and len(single_tweet["doc"]["includes"]["places"]) > 0
                 ) and (
                     "data" in single_tweet["doc"]
                     and "lang" in single_tweet["doc"]["data"]
@@ -118,15 +117,13 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                             else None,
                             # author_id
                             "author_id": single_tweet["doc"]["data"]["author_id"]
-                            if "data" in single_tweet["doc"]
-                            and "author_id" in single_tweet["doc"]["data"]
+                            if "author_id" in single_tweet["doc"]["data"]
                             else None,
                             # domain name
                             "domain_name": single_tweet["doc"]["data"][
                                 "context_annotations"
                             ][0]["domain"]["name"]
-                            if "data" in single_tweet["doc"]
-                            and "context_annotations" in single_tweet["doc"]["data"]
+                            if "context_annotations" in single_tweet["doc"]["data"]
                             and "domain"
                             in single_tweet["doc"]["data"]["context_annotations"][0]
                             and "name"
@@ -138,8 +135,7 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                             "description": single_tweet["doc"]["data"][
                                 "context_annotations"
                             ][0]["domain"]["description"]
-                            if "data" in single_tweet["doc"]
-                            and "context_annotations" in single_tweet["doc"]["data"]
+                            if "context_annotations" in single_tweet["doc"]["data"]
                             and "domain"
                             in single_tweet["doc"]["data"]["context_annotations"][0]
                             and "description"
@@ -154,14 +150,12 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                                     "hashtags"
                                 ]
                             ]
-                            if "data" in single_tweet["doc"]
-                            and "entities" in single_tweet["doc"]["data"]
+                            if "entities" in single_tweet["doc"]["data"]
                             and "hashtags" in single_tweet["doc"]["data"]["entities"]
                             else [],
                             # sentiment
                             "sentiment": single_tweet["doc"]["data"]["sentiment"]
-                            if "data" in single_tweet["doc"]
-                            and "sentiment" in single_tweet["doc"]["data"]
+                            if "sentiment" in single_tweet["doc"]["data"]
                             else None,
                             # matching rule tag
                             "matching_rule_tag": single_tweet["doc"]["matching_rules"][
@@ -174,8 +168,7 @@ def node_process(twitter_file_path, c_start, c_end, b_size):
                             "place_name": location,
                             # text
                             "text": single_tweet["doc"]["data"]["text"]
-                            if "data" in single_tweet["doc"]
-                            and "text" in single_tweet["doc"]["data"]
+                            if "text" in single_tweet["doc"]["data"]
                             else None,
                         }
                         data_list.append(data)
