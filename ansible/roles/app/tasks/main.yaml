@@ -1,10 +1,10 @@
 - name: Copy app directory
   synchronize: 
-    src: ./app
+    src: ../app
     dest: "{{ directory_path }}"
     delete: yes
 
 - name: Deploy app, reverse proxy and RESTful API
   command: "docker compose up -d"
   args:
-    chdir: /home/{{ansible_user}}/data/app
+    chdir: "{{ directory_path }}/app"
