@@ -1,8 +1,14 @@
 ---
+- name: Create a ext4 filesystem on /dev/vdb
+  community.general.filesystem:
+    fstype: ext4
+    dev: "{{ mount.src }}"
+
 - name: Create mount directory
   file: 
     path: "{{ mount.path }}"
     state: directory
+
 - name: Mount volume 
   mount:
     path: "{{ mount.path }}"
