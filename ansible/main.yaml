@@ -31,14 +31,6 @@
   roles:
     - cluster
 
-- name: Set up app
-  become: yes
-  hosts: app 
-  vars_files:
-    - variables/mrc.yaml
-  roles:
-    - app
-
 - name: Set up databases
   hosts: config
   become: yes
@@ -48,6 +40,14 @@
   roles:
     - database
     - mapreduce
+
+- name: Set up app
+  become: yes
+  hosts: app 
+  vars_files:
+    - variables/mrc.yaml
+  roles:
+    - app
 
 - name: set up docker swarm 
   hosts: multi
