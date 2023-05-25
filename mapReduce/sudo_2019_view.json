@@ -1,0 +1,1 @@
+{"views":{"sudo_filter":{"map":"function (doc) {\n    // male = doc.males_num\n    // female = doc.females_num\n    new_state_name = doc.state_name.replace(/ *\\([^)]*\\) */g, \"\").toLowerCase().trim()\n    emit([new_state_name], [doc.males_num,doc.females_num])\n}","reduce":"_sum"}}}
