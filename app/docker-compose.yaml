@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  backend:
+    build: backend
+    volumes:
+      - ./backend:/flaskProject
+    ports:
+      - 5000:5000
+
+  balancer:
+    build: balancer
+    volumes:
+      - ./balancer:/etc/nginx/conf.d
+    ports: 
+      - 80:80
+    depends_on:
+      - backend 
+      - frontend
+
+  frontend:
+    build: frontend
+    volumes:
+      - ./frontend:/material-kit-react
+    ports:
+      - 3000:3000
+  
