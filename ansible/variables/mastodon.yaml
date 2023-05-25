@@ -1,0 +1,3 @@
+mastodon_path: /home/{{ ansible_user }}/data
+mastodon_single_path: /home/{{ ansible_user }}/data/mastodon/single
+mastodon_scale_path: /home/{{ ansible_user }}/data/mastodon/scale
