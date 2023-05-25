@@ -13,7 +13,7 @@
 
 - name: Copy docker.ini to remote
   copy:
-    src: ./docker.ini
+    src: config_files/docker.ini
     dest: "{{ bind_mount_path.src }}/docker.ini"
 
 - name: Start CouchDB image
