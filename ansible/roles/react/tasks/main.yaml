@@ -4,21 +4,11 @@
     recurse: yes
     state: directory
 
-- name: Create react directory 
-  file:
-    path: "{{ image_directory }}/backend"
-    recurse: yes
-    state: directory
-
-# - name: Copy react dockerfile
-#   copy: 
-#     src: ./images/frontend/Dockerfile
-#     dest: "{{ image_directory }}/frontend/Dockerfile"
-
-# - name: Copy material-kit-react
-#   copy:
-#     src: material-kit-react
-#     dest: "{{ image_directory }}/frontend/"
+- name: Copy frontend
+  synchronize:
+    src: ./images/frontend
+    dest: "{{ image_directory }}"
+    delete: yes
 
 # - name: Build react image
 #   docker_image: 

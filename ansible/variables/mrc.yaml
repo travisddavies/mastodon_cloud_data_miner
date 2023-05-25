@@ -67,3 +67,4 @@ mount:
   src: /dev/vdb
 
 directory_path: "/home/{{ ansible_user }}/data"
+image_directory: "/home/{{ ansible_user }}/data/images"
