@@ -1,4 +1,4 @@
-# COMP90024 Cluster and Cloud Computing - Assignment 2
+# Mastodon Cloud Data Miner
 ## User Guide
 To deploy the cloud instances, find the deployment directory and execute the following command:
 
